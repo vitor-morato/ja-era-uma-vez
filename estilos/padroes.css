@@ -4579,3 +4579,12 @@ body #aplicacao .carta_ampliada .topo_detalhes .fechar_detalhes {
 #consulta .marcador_sumario > .icone_sumario {
   inset: 0 0 35%;
 }
+
+@media (pointer: coarse) {
+  #aplicacao .jogo:not(.modo_construir) .faixa_mao,
+  #aplicacao .jogo:not(.modo_construir) .faixa_mao .carta,
+  #aplicacao .jogo:not(.modo_mover) .fila_compartilhada,
+  #aplicacao .jogo:not(.modo_mover) .fila_compartilhada .carta {
+    touch-action: pan-x;
+  }
+}

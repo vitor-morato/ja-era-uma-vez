@@ -315,7 +315,16 @@ export function instalarMovimento(
     (ev) => {
       pararRetornos();
       if (ev.button !== 0 || !ev.isPrimary || !podeAtalho()) return;
-      const elemento = ev.target.closest('.fila_compartilhada .carta[data-propria="true"]');
+      // O primeiro toque abre a consulta, que pode cobrir a miniatura no segundo toque.
+      const elemento =
+        ev.target.closest('.fila_compartilhada .carta[data-propria="true"]') ||
+        (ultimoClique && ev.target.closest('.carta_ampliada') && !ev.target.closest('button')
+          ? app.querySelector(
+              '.fila_compartilhada .carta[data-propria="true"][data-carta="' +
+                ultimoClique.id +
+                '"]',
+            )
+          : null);
       if (!elemento) return;
       const id = Number(elemento.dataset.carta),
         agora = performance.now();
@@ -333,6 +342,8 @@ export function instalarMovimento(
         entrarModo('ativar', id);
         return;
       }
+      // No celular, deslizar deve navegar pela fila; somente o duplo toque é atalho.
+      if (ev.pointerType !== 'mouse' || matchMedia('(pointer: coarse)').matches) return;
       if (obterModo() === 'mover') return;
       if (obterEstado().fila.length < 2) return;
       cancelarEspera();

@@ -193,6 +193,8 @@ export function instalarConstrucao(
     );
   }
   function preparar(elemento, ev) {
+    const toque = ev.pointerType !== 'mouse' || matchMedia('(pointer: coarse)').matches;
+    if (toque && obterModo() !== 'construir') return;
     const id = Number(elemento.dataset.carta),
       e = obterEstado();
     if (validar(e, { tipo: 'construir', carta: id })) return;
