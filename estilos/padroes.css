@@ -1,0 +1,4184 @@
+/* Padrões visuais finais. Não alteram posições, regras ou gestos da mesa. */
+:root {
+  --rotulo_interface: 13px;
+  --texto_interface: 16px;
+  --espaco_painel: clamp(20px, 3vw, 36px);
+  --sombra_painel: 6px 8px 0 #0c090d55;
+}
+button,
+input,
+select {
+  font-weight: 700;
+}
+.sobretitulo {
+  font-size: var(--rotulo_interface);
+  line-height: 1.5;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+/* Entrada e configuração */
+.selecao_partida .escolher_modo > span:last-of-type {
+  font-size: 14px;
+  line-height: 1.45;
+}
+.retomada_modo {
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+.retomada_situacao {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.retomada_turno > small {
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.selecao_partida .continuar_salva {
+  grid-template-columns: 28px minmax(0, 1fr) 64px;
+}
+.configurando_partida .nova .campos_jogadores label {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.configurando_partida .nova .campos_jogadores input {
+  font-size: 16px;
+}
+.configurando_partida .nova > .sobretitulo {
+  font-size: 13px;
+}
+.dificuldade_trovador legend {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+.dificuldade_trovador label span {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.configurando_partida .nova .descricao_solo {
+  font-size: 16px;
+  line-height: 1.5;
+  gap: 8px;
+}
+.descricao_solo > strong {
+  font-size: 14px;
+}
+.voltar_modos {
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+/* Mesma hierarquia nas telas auxiliares */
+.privacidade,
+.turno_encerrado,
+.resolucao_efeito,
+.resumo_solo,
+.resultado_final,
+.painel_espera_solo {
+  box-shadow: var(--sombra_painel);
+}
+.privacidade > .sobretitulo,
+.encerramento_principal > .sobretitulo,
+.anuncio_turno_solo > .sobretitulo,
+.resolucao_efeito > header > .sobretitulo,
+.painel_espera_solo > .sobretitulo {
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+}
+.privacidade p,
+.encerramento_principal > p,
+.anuncio_turno_solo > p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.privacidade .primario,
+.turno_encerrado .primario,
+.resolucao_opcoes button,
+.resultado_acoes button {
+  font-size: 15px;
+  min-height: 50px;
+}
+.turno_encerrado .proximo_capitulo {
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+#titulo_encerrado {
+  margin: 18px 0;
+}
+.resumo_descartes h2,
+.resolucao_cartas h2 {
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.resolucao_descricao strong {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.resolucao_descricao p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.painel_espera_solo {
+  gap: 24px;
+  padding: var(--espaco_painel);
+}
+.painel_espera_solo h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.2;
+}
+.painel_espera_solo p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.progresso_trovador {
+  display: block;
+  position: relative;
+  width: 96px;
+  height: 4px;
+  overflow: hidden;
+  background: var(--fundo_carta);
+}
+.progresso_trovador i {
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  background: var(--amarelo);
+  animation: calculando_trovador 1.5s ease-in-out infinite;
+  opacity: 1;
+}
+@keyframes calculando_trovador {
+  0% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translateX(96px);
+  }
+}
+.resultado_faixa {
+  display: none;
+}
+.resultado_conteudo {
+  padding: var(--espaco_painel);
+}
+.resultado_conteudo > .sobretitulo {
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+}
+.resultado_conteudo h1 {
+  margin: 16px 0 22px;
+}
+.resultado_vencedor {
+  gap: 12px;
+  padding-left: 14px;
+}
+.resultado_vencedor > .dono {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.resultado_conteudo > p {
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+.resultado_dados {
+  margin: 20px 0;
+  padding: 18px 0;
+  gap: 16px;
+  border-block-width: 6px;
+}
+.resultado_dados span {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+/* Confirmações e avisos */
+.confirmacao form {
+  padding: 24px;
+}
+.confirmacao .sobretitulo {
+  font-size: 12px;
+  letter-spacing: 0.6px;
+}
+.confirmacao h2 {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 14px 0 18px;
+}
+.confirmacao p {
+  font-size: 16px;
+  line-height: 1.55;
+}
+.confirmacao .botoes_confirmacao button {
+  font-size: 15px;
+}
+#mensagem:not(:empty) {
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.aviso_acoes_esgotadas > span:not(.acoes_esgotadas_pontos),
+.aviso_acoes_esgotadas p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+/* Conteúdo de leitura: fontes maiores nas consultas, sem expandir a fila */
+.painel_poderes h3 {
+  font-size: 17px;
+  line-height: 1.35;
+}
+.painel_poderes p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+.painel_poderes .estado_habilidade,
+.painel_poderes article > small {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.painel_poderes > header strong {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.carta_ampliada .conteudo_detalhes .habilidade > strong {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+.carta_ampliada .conteudo_detalhes .habilidade > small {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.carta_ampliada .conteudo_detalhes .aviso_carta > b {
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+.carta_ampliada .conteudo_detalhes .aviso_carta > span {
+  font-size: 14px;
+  line-height: 1.45;
+}
+#aplicacao .jogo .carta h3.nome_miniatura {
+  font-size: 12px;
+  line-height: 16px;
+}
+#aplicacao .jogo .carta[data-carta='21'] h3.nome_miniatura {
+  font-size: 11px;
+}
+/* Livro: rótulos legíveis e hierarquia constante */
+#consulta > header h2 {
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+}
+#consulta > header button {
+  font-size: 15px;
+}
+#consulta .manual .sobretitulo,
+#consulta .rotulo_capitulo,
+#consulta .manual_edicao {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+}
+#consulta .sumario_coluna {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+#consulta .manual_numeros > span {
+  font-size: 12px;
+  line-height: 1.5;
+}
+#consulta .manual_secao p,
+#consulta .manual_habilidade > p,
+#consulta .guia_exemplo_carta > p {
+  font-size: 16px;
+  line-height: 1.55;
+}
+#consulta .manual_secao h3 {
+  font-size: 18px;
+  line-height: 1.4;
+}
+#consulta .manual_personagens > p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+#consulta .manual_personagens label,
+#consulta .manual_contagem {
+  font-size: 13px !important;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+#consulta .voltar_sumario {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+#consulta .manual_credito {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 700px) {
+  :root {
+    --rotulo_interface: 12px;
+    --espaco_painel: 22px;
+  }
+  .selecao_partida .escolher_modo > span:last-of-type {
+    font-size: 12px;
+  }
+  .selecao_partida .continuar_salva {
+    grid-template-columns: 22px minmax(0, 1fr) 58px;
+    gap: 10px;
+  }
+  .retomada_situacao {
+    font-size: 13px;
+  }
+  .retomada_texto > strong {
+    font-size: 13px;
+  }
+  .privacidade > .sobretitulo,
+  .encerramento_principal > .sobretitulo,
+  .anuncio_turno_solo > .sobretitulo,
+  .resolucao_efeito > header > .sobretitulo,
+  .painel_espera_solo > .sobretitulo {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .privacidade p,
+  .encerramento_principal > p,
+  .anuncio_turno_solo > p {
+    font-size: 16px;
+  }
+  .resumo_descartes h2,
+  .resolucao_cartas h2 {
+    font-size: 13px;
+  }
+  .resolucao_efeito {
+    padding: 20px;
+  }
+  .resolucao_efeito h1 {
+    font-size: 26px;
+  }
+  .resolucao_descricao {
+    padding: 12px;
+    margin: 18px 0;
+  }
+  .resolucao_descricao p {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .resolucao_opcoes > button {
+    font-size: 14px;
+    min-height: 46px;
+  }
+  .painel_espera_solo p {
+    font-size: 16px;
+  }
+  .resultado_conteudo h1 {
+    font-size: 42px;
+  }
+  .resultado_dados strong {
+    font-size: 28px;
+  }
+  .resultado_acoes {
+    gap: 10px;
+  }
+  .resultado_acoes button {
+    min-height: 46px;
+    font-size: 14px;
+    padding: 10px;
+  }
+  .confirmacao form {
+    padding: 20px;
+  }
+  .confirmacao h2 {
+    font-size: 25px;
+  }
+  .confirmacao .botoes_confirmacao button {
+    font-size: 14px;
+  }
+  #consulta > header h2 {
+    font-size: 15px;
+  }
+  #consulta > header button {
+    font-size: 14px;
+  }
+}
+@media (max-height: 650px) {
+  #aplicacao .jogo .carta[data-carta='21'] h3.nome_miniatura {
+    font-size: 10px;
+  }
+  .resolucao_efeito h1 {
+    margin: 10px 0 16px;
+  }
+  .resolucao_cartas > div {
+    gap: 18px;
+  }
+  .resolucao_descricao {
+    margin: 16px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .progresso_trovador i {
+    animation: none;
+    left: 28px;
+  }
+}
+
+/* Telas auxiliares usam a altura disponível sem reservar espaço vazio de rodapé. */
+body:has(
+  #aplicacao
+    > :is(
+      .privacidade,
+      .turno_encerrado,
+      .resolucao_efeito,
+      .resultado_final,
+      .resumo_solo,
+      .trovador_jogando
+    )
+) {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+body:has(
+    #aplicacao
+      > :is(
+        .privacidade,
+        .turno_encerrado,
+        .resolucao_efeito,
+        .resultado_final,
+        .resumo_solo,
+        .trovador_jogando
+      )
+  )
+  > #aplicacao {
+  display: grid;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  padding: 24px;
+}
+body:has(
+    #aplicacao
+      > :is(
+        .privacidade,
+        .turno_encerrado,
+        .resolucao_efeito,
+        .resultado_final,
+        .resumo_solo,
+        .trovador_jogando
+      )
+  )
+  > .cabecalho {
+  padding: 12px 24px;
+  min-height: 68px;
+  gap: 12px;
+}
+@media (max-width: 700px) {
+  body:has(
+      #aplicacao
+        > :is(
+          .privacidade,
+          .turno_encerrado,
+          .resolucao_efeito,
+          .resultado_final,
+          .resumo_solo,
+          .trovador_jogando
+        )
+    )
+    > #aplicacao {
+    padding: 16px 12px;
+  }
+  body:has(
+      #aplicacao
+        > :is(
+          .privacidade,
+          .turno_encerrado,
+          .resolucao_efeito,
+          .resultado_final,
+          .resumo_solo,
+          .trovador_jogando
+        )
+    )
+    > .cabecalho {
+    padding: 10px 12px;
+    gap: 8px;
+    min-height: 64px;
+  }
+  body:has(
+      #aplicacao
+        > :is(
+          .privacidade,
+          .turno_encerrado,
+          .resolucao_efeito,
+          .resultado_final,
+          .resumo_solo,
+          .trovador_jogando
+        )
+    )
+    > .cabecalho
+    .marca {
+    font-size: 21px;
+  }
+  body:has(
+      #aplicacao
+        > :is(
+          .privacidade,
+          .turno_encerrado,
+          .resolucao_efeito,
+          .resultado_final,
+          .resumo_solo,
+          .trovador_jogando
+        )
+    )
+    > .cabecalho
+    button {
+    font-size: 12px;
+    min-height: 42px;
+    padding: 6px 8px;
+    white-space: nowrap;
+  }
+}
+@media (max-height: 720px) {
+  .resolucao_efeito {
+    padding: 20px;
+  }
+  .resolucao_efeito h1 {
+    font-size: 26px;
+    margin: 10px 0 16px;
+  }
+  .resolucao_cartas > div {
+    gap: 18px;
+  }
+  .resolucao_cartas .resumo_carta {
+    width: 112px;
+    flex-basis: auto;
+    padding: 6px;
+    gap: 6px;
+  }
+  .resolucao_cartas .resumo_carta > .retrato {
+    width: 64px;
+    height: 64px;
+    align-self: center;
+  }
+  .resolucao_cartas .resumo_carta h3 {
+    font-size: 12px;
+    line-height: 16px;
+    min-height: 32px;
+  }
+  .resolucao_descricao {
+    padding: 12px;
+    margin: 16px 0;
+  }
+  .resolucao_descricao p {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .resultado_conteudo {
+    padding: 22px;
+  }
+  .resultado_conteudo h1 {
+    font-size: 42px;
+    margin: 12px 0 18px;
+  }
+  .resultado_conteudo > p {
+    font-size: 16px;
+    margin: 16px 0;
+  }
+  .resultado_dados {
+    padding: 14px 0;
+    margin: 16px 0;
+  }
+}
+@media (max-width: 700px) and (max-height: 720px) {
+  .turno_encerrado:has(.resumo_descartes) {
+    padding: 16px;
+    gap: 14px;
+  }
+  .turno_encerrado:has(.resumo_descartes) #titulo_encerrado {
+    font-size: 32px;
+    line-height: 1.1;
+    margin: 12px 0;
+  }
+  .encerramento_principal > p {
+    margin: 12px 0;
+    font-size: 16px;
+  }
+  .turno_encerrado .primario {
+    min-height: 46px;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+  .turno_encerrado .resumo_descartes {
+    padding-top: 14px;
+  }
+  .turno_encerrado .resumo_descartes h2 {
+    margin-bottom: 12px;
+  }
+  .turno_encerrado .resumo_carta {
+    width: 112px;
+    flex-basis: 112px;
+    padding: 6px;
+    gap: 6px;
+  }
+  .resolucao_efeito {
+    padding: 16px;
+  }
+  .resolucao_efeito h1 {
+    font-size: 22px;
+  }
+  .resolucao_cartas h2 {
+    font-size: 12px;
+    line-height: 1.4;
+    min-height: 28px;
+  }
+  .resolucao_cartas {
+    gap: 10px;
+  }
+  .resolucao_seta {
+    font-size: 22px;
+  }
+  .resolucao_opcoes {
+    gap: 8px;
+  }
+  .resolucao_opcoes > button {
+    font-size: 13px;
+    min-height: 44px;
+    padding: 7px;
+  }
+  .resumo_solo {
+    padding: 18px;
+    gap: 16px;
+  }
+  .anuncio_turno_solo h1 {
+    font-size: 30px;
+    margin: 10px 0;
+  }
+  .anuncio_turno_solo > p {
+    margin-top: 8px;
+    font-size: 15px;
+  }
+  .resumo_solo .resumo_descartes {
+    padding-top: 14px;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 720px) {
+  body:has(
+      #aplicacao
+        > :is(
+          .privacidade,
+          .turno_encerrado,
+          .resolucao_efeito,
+          .resultado_final,
+          .resumo_solo,
+          .trovador_jogando
+        )
+    )
+    > #aplicacao {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .resultado_acoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .resultado_acoes button {
+    font-size: 13px;
+    padding: 8px;
+    line-height: 1.4;
+    min-width: 0;
+  }
+}
+
+/* Nomes inteiros em duas linhas: ampliar só até onde cada miniatura comporta. */
+#aplicacao .jogo .carta[data-carta='21'] h3.nome_miniatura {
+  font-size: 10px;
+}
+@media (max-height: 650px) {
+  #aplicacao .jogo .carta h3.nome_miniatura {
+    font-size: 11px;
+    line-height: 16px;
+  }
+  #aplicacao
+    .jogo
+    .carta:is([data-carta='6'], [data-carta='14'], [data-carta='19'])
+    h3.nome_miniatura {
+    font-size: 10.5px;
+  }
+  #aplicacao .jogo .carta[data-carta='21'] h3.nome_miniatura {
+    font-size: 9px;
+  }
+}
+
+/* Contagens da mesa: rótulos mais claros, preservando os controles compactos. */
+.jogo .quantidade_baralho {
+  font-size: 12px;
+  line-height: 1.3;
+}
+.jogo .abrir_descarte .rotulo_pilha {
+  font-size: 12px;
+  line-height: 1.3;
+}
+@media (max-width: 700px) {
+  .jogo .quantidade_baralho {
+    font-size: 11px;
+  }
+  .jogo .abrir_descarte .rotulo_pilha {
+    font-size: 11px;
+  }
+}
+
+/* Moldura única no livro, sem linhas internas paralelas. */
+#conteudo_consulta {
+  padding: 0;
+  background: var(--fundo);
+}
+#consulta .manual {
+  border-left: 0;
+  box-shadow: none;
+}
+
+/* Dificuldades com as mesmas cores da configuração da partida. */
+#consulta .guia_grade > .manual_dificuldade_normal {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: var(--preto);
+}
+#consulta .guia_grade > .manual_dificuldade_dificil {
+  background: var(--rosa);
+  border-color: var(--rosa);
+  color: var(--texto);
+}
+#consulta .manual_dificuldade > b {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: inherit;
+}
+#consulta .manual_dificuldade > p {
+  color: inherit;
+}
+
+.resumo_solo .continuar_resumo_solo {
+  grid-column: 1/-1;
+  justify-self: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) and (max-height: 720px) {
+  .resumo_solo {
+    gap: 10px;
+    padding: 16px;
+  }
+}
+
+#mensagem.partida_abortada:not([hidden]):not(:empty) {
+  border: 0;
+  background: var(--rosa);
+  color: var(--texto);
+  padding: 18px 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+}
+@media (max-width: 500px) {
+  #mensagem.partida_abortada:not([hidden]):not(:empty) {
+    font-size: 16px;
+    padding: 16px;
+  }
+}
+
+/* Fita do sumário nasce na divisória e acompanha a leitura pelo alto da página. */
+#consulta {
+  height: 94dvh;
+  max-height: 94dvh;
+  top: 3dvh;
+  bottom: auto;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#consulta[open] {
+  display: flex;
+  flex-direction: column;
+}
+#consulta > header {
+  position: relative;
+  top: auto;
+  flex-shrink: 0;
+  z-index: 4;
+}
+#conteudo_consulta {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--divisoria) var(--fundo);
+}
+#consulta .manual [id] {
+  scroll-margin-top: 20px;
+}
+.camada_marcador_sumario {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+.marcador_sumario {
+  position: absolute;
+  right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 8px 0 28px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: var(--preto);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  isolation: isolate;
+  pointer-events: auto;
+}
+.letras_sumario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.letras_sumario > span {
+  display: block;
+  line-height: 16px;
+  font-weight: 700;
+}
+.marcador_sumario::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--amarelo);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 28px), 0 100%);
+  z-index: -1;
+}
+.marcador_sumario::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 34px;
+  background: #0c090d88;
+  clip-path: polygon(0 28px, 50% 0, 100% 28px, 100% 100%, 50% 6px, 0 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+.marcador_sumario:hover {
+  background: transparent;
+}
+.marcador_sumario:hover::before,
+.marcador_sumario:focus-visible::before {
+  background: var(--texto);
+}
+#consulta .manual_secao.pagina_capitulo > div {
+  padding-right: 48px;
+}
+#consulta .manual_personagens {
+  padding-right: 48px;
+}
+@media (max-width: 650px) {
+  .marcador_sumario {
+    padding-bottom: 22px;
+    font-size: 12px;
+  }
+  .letras_sumario > span {
+    line-height: 15px;
+  }
+  .marcador_sumario::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 20px), 0 100%);
+  }
+  .marcador_sumario::after {
+    height: 26px;
+    clip-path: polygon(0 20px, 50% 0, 100% 20px, 100% 100%, 50% 6px, 0 100%);
+  }
+  #consulta .manual_secao.pagina_capitulo > div {
+    padding-right: 52px;
+  }
+  #consulta .manual_personagens {
+    padding-right: 52px;
+  }
+}
+/* Espera indeterminada e tempo restante real, sem inventar porcentagem de cálculo. */
+.progresso_trovador {
+  width: min(280px, 100%);
+  height: 12px;
+  background: var(--fundo_carta);
+}
+.progresso_trovador i {
+  width: 36%;
+  height: 100%;
+  animation: carregando_trovador 1.6s ease-in-out infinite;
+}
+@keyframes carregando_trovador {
+  0% {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(0);
+  }
+}
+.resumo_solo {
+  position: relative;
+}
+.barra_tempo_resumo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 8px;
+  background: var(--painel);
+  overflow: hidden;
+  pointer-events: none;
+}
+.barra_tempo_resumo > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--amarelo);
+  transform-origin: left center;
+}
+.tempo_restante {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .progresso_trovador i {
+    animation: none;
+    left: 32%;
+    transform: none;
+  }
+}
+
+/* Retomada centralizada abaixo dos modos, com o destaque amarelo dos avisos. */
+.inicio_modos > .continuar_salva {
+  grid-column: 1/-1;
+  justify-self: center;
+  width: min(460px, 100%);
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 64px;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  margin: 0;
+  border: 6px solid var(--amarelo);
+  background: var(--painel);
+  color: var(--texto);
+  text-align: left;
+  box-shadow: var(--sombra_painel);
+}
+.inicio_modos:has(> .continuar_salva) {
+  row-gap: 28px;
+}
+@media (max-width: 700px) {
+  .inicio_modos > .continuar_salva {
+    grid-template-columns: 22px minmax(0, 1fr) 58px;
+    gap: 10px;
+    padding: 12px;
+  }
+  .na_tela_inicial .inicio_modos:has(> .continuar_salva) {
+    row-gap: 18px;
+  }
+}
+@media (max-width: 700px) and (max-height: 720px) {
+  .inicio_modos > .continuar_salva {
+    padding: 10px 12px;
+  }
+  .na_tela_inicial .inicio_modos:has(> .continuar_salva) {
+    row-gap: 12px;
+  }
+}
+
+/* Contagem separada do botão, diretamente acima da barra inferior. */
+.resumo_solo > .tempo_restante {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  color: var(--amarelo);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  pointer-events: none;
+}
+.painel_espera_solo {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 36px;
+}
+.painel_espera_solo .progresso_trovador {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+  margin: 0;
+}
+@media (max-width: 650px) {
+  .resumo_solo > .tempo_restante {
+    font-size: 18px;
+    left: 12px;
+    bottom: 14px;
+  }
+}
+
+.painel_espera_solo .progresso_trovador i {
+  background: var(--rosa);
+}
+
+/* Retorno ao sumário: fita fixa, recuada para dentro da divisória. */
+.marcador_sumario {
+  justify-content: center;
+}
+.icone_sumario {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+#consulta .manual_secao.pagina_capitulo > div,
+#consulta .manual_personagens {
+  padding-right: 64px;
+}
+@media (max-width: 650px) {
+  .icone_sumario {
+    font-size: 28px;
+  }
+  #consulta .manual_secao.pagina_capitulo > div,
+  #consulta .manual_personagens {
+    padding-right: 60px;
+  }
+}
+
+/* Carregamento cresce do centro e termina preenchendo os dois lados. */
+.painel_espera_solo .progresso_trovador i {
+  left: 0;
+  right: 0;
+  width: 100%;
+  animation: none;
+  transform: scaleX(0);
+  transform-origin: center center;
+}
+
+/* Tópicos expansíveis com aparência de controle e estados claros. */
+#consulta .guia_detalhe {
+  padding: 0;
+  border: 6px solid var(--divisoria);
+  background: var(--painel);
+  margin: 20px 0;
+}
+#consulta .guia_detalhe > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 54px;
+  padding: 14px 16px;
+  list-style: none;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--texto);
+  cursor: pointer;
+  text-wrap: balance;
+}
+#consulta .guia_detalhe > summary::-webkit-details-marker {
+  display: none;
+}
+#consulta .guia_detalhe > summary::after {
+  content: '+';
+  flex: 0 0 24px;
+  text-align: center;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--amarelo);
+}
+#consulta .guia_detalhe[open] {
+  border-color: var(--amarelo);
+}
+#consulta .guia_detalhe[open] > summary {
+  border-bottom: 6px solid var(--divisoria);
+}
+#consulta .guia_detalhe[open] > summary::after {
+  content: '−';
+}
+#consulta .guia_detalhe:has(> summary:hover),
+#consulta .guia_detalhe:focus-within {
+  border-color: var(--texto);
+}
+
+#consulta .guia_detalhe > summary:focus-visible {
+  outline: 3px solid var(--amarelo);
+  outline-offset: 4px;
+}
+#consulta .guia_detalhe > ul {
+  margin: 0;
+  padding: 8px 18px 14px 36px;
+  background: var(--fundo);
+  font-size: 16px;
+  line-height: 1.55;
+}
+@media (max-width: 650px) {
+  #consulta .guia_detalhe > summary {
+    padding: 12px;
+    font-size: 14px;
+    gap: 10px;
+  }
+  #consulta .guia_detalhe > ul {
+    font-size: 15px;
+    padding-right: 14px;
+    padding-left: 30px;
+  }
+}
+
+/* Leitura do manual: notas legíveis e instruções divididas em tópicos. */
+#consulta .manual_credito {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+  padding: 20px 0;
+}
+#consulta .manual .sobretitulo,
+#consulta .rotulo_capitulo,
+#consulta .manual_edicao {
+  font-size: 13px;
+  line-height: 1.5;
+}
+#consulta .sumario_coluna {
+  font-size: 13px;
+}
+#consulta .manual_secao p {
+  max-width: 68ch;
+}
+#consulta .guia_grade article > b {
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+}
+.manual_topico {
+  margin-top: 28px;
+}
+#consulta .manual_topico h3 {
+  margin: 22px 0 12px;
+  font-size: 19px;
+  line-height: 1.35;
+}
+#consulta .manual_topico h3:first-child {
+  margin-top: 0;
+}
+#consulta .manual_topico .manual_passos,
+#consulta .manual_topico .guia_lista {
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 12px 0 18px;
+}
+.manual_cores_acoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin: 16px 0;
+  padding-left: 22px;
+}
+.manual_cores_acoes > li {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+#consulta .manual_destaque > strong {
+  font-size: 15px;
+  line-height: 1.5;
+}
+@media (max-width: 650px) {
+  #consulta .manual_credito {
+    font-size: 13px;
+  }
+  .manual_cores_acoes {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  #consulta .manual_topico h3 {
+    font-size: 18px;
+  }
+}
+
+/* Informações principais de turno, descarte e decisão em tamanho de leitura. */
+.encerramento_principal > .sobretitulo,
+.anuncio_turno_solo > .sobretitulo,
+.painel_espera_solo > .sobretitulo {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+  color: var(--texto);
+}
+.resumo_descartes h2 {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--texto);
+}
+.resolucao_efeito > header > .sobretitulo,
+.privacidade > .sobretitulo,
+.resultado_conteudo > .sobretitulo {
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+  color: var(--texto);
+}
+.resolucao_cartas h2 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--texto);
+}
+.anuncio_turno_solo .numero_novo_turno {
+  font-size: 18px;
+  line-height: 1.4;
+}
+.resultado_dados span {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.confirmacao .sobretitulo {
+  font-size: 14px;
+  line-height: 1.4;
+}
+@media (max-width: 700px) {
+  .encerramento_principal > .sobretitulo,
+  .anuncio_turno_solo > .sobretitulo,
+  .painel_espera_solo > .sobretitulo {
+    font-size: 15px;
+  }
+  .resumo_descartes h2 {
+    font-size: 16px;
+  }
+  .resolucao_efeito > header > .sobretitulo,
+  .privacidade > .sobretitulo,
+  .resultado_conteudo > .sobretitulo {
+    font-size: 14px;
+  }
+  .resolucao_cartas h2 {
+    font-size: 14px;
+  }
+  .resultado_dados span {
+    font-size: 13px;
+  }
+  .anuncio_turno_solo .numero_novo_turno {
+    font-size: 17px;
+  }
+}
+@media (max-width: 700px) and (max-height: 720px) {
+  .resolucao_descricao {
+    margin: 12px 0;
+  }
+  .resolucao_efeito h1 {
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 720px) {
+  .resumo_solo {
+    padding: 14px;
+    gap: 8px;
+  }
+}
+
+/* Atalhos da fila destacados no capítulo de controles. */
+#consulta .manual_atalhos {
+  margin: 28px 0;
+  padding: 22px;
+  border: 6px solid var(--amarelo);
+  background: var(--painel);
+}
+#consulta .manual_atalhos > h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  color: var(--amarelo);
+}
+#consulta .manual_atalhos p {
+  margin: 8px 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.atalho_manual {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px 0;
+  border-top: 3px solid var(--divisoria);
+}
+.atalho_manual > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--texto);
+  color: var(--preto);
+  font-size: 24px;
+  font-weight: 700;
+}
+.atalho_manual + .atalho_manual > span {
+  background: var(--amarelo);
+}
+#consulta .atalho_manual h4 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+#consulta .manual_atalhos .nota_atalhos {
+  border-top: 3px solid var(--divisoria);
+  padding-top: 14px;
+}
+@media (max-width: 650px) {
+  #consulta .manual_atalhos {
+    padding: 16px;
+  }
+  #consulta .manual_atalhos > h3 {
+    font-size: 20px;
+  }
+  .atalho_manual {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 10px;
+  }
+  .atalho_manual > span {
+    width: 30px;
+    height: 30px;
+    font-size: 21px;
+  }
+  #consulta .atalho_manual h4 {
+    font-size: 16px;
+  }
+}
+
+/* Fitas de navegação: sumário e fechar, lado a lado sobre a leitura. */
+#consulta .manual > .marcador_livro {
+  visibility: hidden;
+}
+#consulta > header {
+  min-height: 64px;
+  box-sizing: border-box;
+}
+#consulta .marcador_fechar {
+  color: var(--texto);
+}
+#consulta .marcador_fechar::before {
+  background: var(--rosa);
+}
+#consulta .marcador_fechar:hover::before,
+#consulta .marcador_fechar:focus-visible::before {
+  background: var(--texto);
+}
+#consulta .marcador_fechar:hover,
+#consulta .marcador_fechar:focus-visible {
+  color: var(--preto);
+}
+#consulta .marcador_sumario:focus-visible {
+  outline: 3px solid var(--texto);
+  outline-offset: -3px;
+}
+#consulta .manual_secao.pagina_capitulo > div,
+#consulta .manual_personagens {
+  padding-right: 132px;
+}
+#consulta .manual_abertura {
+  padding-right: 68px;
+}
+@media (max-width: 650px) {
+  #consulta > header {
+    min-height: 58px;
+  }
+  #consulta .manual_secao.pagina_capitulo > div,
+  #consulta .manual_personagens {
+    padding-right: 100px;
+  }
+  #consulta .manual_abertura {
+    padding-right: 48px;
+  }
+}
+
+#consulta .manual_secao.pagina_capitulo > div {
+  min-width: 0;
+}
+#consulta .pagina_capitulo h2,
+#consulta .pagina_capitulo h3,
+#consulta .pagina_capitulo h4 {
+  overflow-wrap: anywhere;
+}
+
+/* Fundo do cabe?alho do livro de regras. */
+#consulta > header {
+  background: var(--painel);
+}
+
+/* Navegação em fitas presas às divisórias, com ícones da mesma família. */
+.navegacao_fitas {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  border-top: 6px solid var(--divisoria);
+  padding: 0;
+  margin: 20px 0 0;
+  min-width: 0;
+}
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita {
+  --cor_fita: var(--amarelo);
+  --texto_fita: var(--preto);
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 0 56px;
+  width: 56px;
+  min-width: 56px;
+  max-width: 56px;
+  height: 92px;
+  min-height: 92px;
+  margin: 0;
+  padding: 26px 0 0;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--texto_fita);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: none;
+  overflow: visible;
+  transform: none;
+  translate: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--cor_fita);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 24px), 0 100%);
+}
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 30px;
+  z-index: -2;
+  background: var(--preto);
+  opacity: 0.4;
+  clip-path: polygon(0 24px, 50% 0, 100% 24px, 100% 100%, 50% 6px, 0 100%);
+  pointer-events: none;
+}
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita.fita_perigo {
+  --cor_fita: var(--rosa);
+  --texto_fita: var(--texto);
+}
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita:hover,
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita:focus-visible {
+  --cor_fita: var(--texto);
+  --texto_fita: var(--preto);
+}
+.controle_fita > span {
+  pointer-events: none;
+}
+.pagina_configuracao .nova {
+  position: relative;
+}
+body #aplicacao .nova .voltar_modos {
+  position: absolute;
+  top: 0;
+  right: 18px;
+}
+.nova .identidade_modo {
+  padding-right: 66px;
+}
+.cabecalho {
+  position: relative;
+}
+body .cabecalho #regras.controle_fita {
+  position: absolute;
+  right: 18px;
+  top: calc(100% - 6px);
+  z-index: 12;
+  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
+  height: 68px;
+  min-height: 68px;
+  padding-top: 14px;
+  font-size: 28px;
+}
+body.em_partida .resumo_turno {
+  padding-right: 64px;
+}
+body #aplicacao .resultado_acoes.navegacao_fitas {
+  display: flex;
+  grid-template-columns: none;
+}
+body #aplicacao .continuar_resumo_solo {
+  justify-self: auto;
+}
+.resumo_solo > .navegacao_fitas {
+  grid-column: 1/-1;
+  justify-self: stretch;
+}
+.botoes_confirmacao.navegacao_fitas {
+  display: flex;
+  grid-template-columns: none;
+  gap: 12px;
+}
+@media (max-width: 700px) {
+  body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita {
+    width: 48px;
+    min-width: 48px;
+    max-width: 48px;
+    flex-basis: 48px;
+    height: 76px;
+    min-height: 76px;
+    padding-top: 20px;
+    font-size: 27px;
+  }
+  .navegacao_fitas {
+    margin-top: 14px;
+  }
+  body #aplicacao .nova .voltar_modos {
+    right: 12px;
+  }
+  .nova .identidade_modo {
+    padding-right: 58px;
+  }
+}
+@media (max-height: 720px) {
+  body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita {
+    height: 68px;
+    min-height: 68px;
+    padding-top: 16px;
+  }
+  .navegacao_fitas {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 720px) {
+  .turno_encerrado .navegacao_fitas,
+  .resumo_solo .navegacao_fitas {
+    margin-top: 4px;
+  }
+  body #aplicacao :is(.turno_encerrado, .resumo_solo, .resultado_final) button.controle_fita {
+    height: 50px;
+    min-height: 50px;
+    padding-top: 8px;
+  }
+  .resumo_solo {
+    row-gap: 4px;
+  }
+}
+.nova .identidade_modo {
+  min-width: 0;
+}
+.nova .identidade_modo h2 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.nova .identidade_modo {
+  padding-right: 0;
+}
+.nova > .sobretitulo {
+  display: block;
+  min-height: 42px;
+  padding-right: 64px;
+}
+.nova .identidade_modo h2 {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Ícones centralizados apenas no retângulo da fita, antes do recorte. */
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita {
+  padding: 0;
+}
+.controle_fita > span {
+  position: absolute;
+  inset: 0 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+#consulta .marcador_sumario {
+  padding: 0;
+}
+#consulta .marcador_sumario > .icone_sumario {
+  position: absolute;
+  inset: 0 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+body .cabecalho #regras.controle_fita {
+  top: 0;
+  right: 18px;
+  width: 56px;
+  min-width: 56px;
+  max-width: 56px;
+  height: 92px;
+  min-height: 92px;
+  padding: 0;
+  font-size: 30px;
+  z-index: 12;
+}
+body.em_partida .resumo_turno {
+  padding-right: 0;
+}
+.cabecalho:has(#regras:not([hidden])) .marca {
+  padding-right: 64px;
+}
+@media (max-width: 700px) {
+  body .cabecalho #regras.controle_fita {
+    right: 12px;
+    width: 48px;
+    min-width: 48px;
+    max-width: 48px;
+    height: 76px;
+    min-height: 76px;
+    font-size: 27px;
+  }
+}
+@media (max-width: 650px) {
+  #consulta .marcador_sumario > .icone_sumario {
+    bottom: 20px;
+  }
+}
+@media (max-height: 720px) {
+  body .cabecalho #regras.controle_fita {
+    height: 68px;
+    min-height: 68px;
+  }
+}
+
+/* O ?cone do cabe?alho herda o tamanho da fita, sem o estilo de legenda. */
+.cabecalho #regras.controle_fita > span {
+  font: inherit;
+  color: inherit;
+  letter-spacing: 0;
+}
+
+/* O X de abortar permanece vis?vel tamb?m durante a partida. */
+body.em_partida .cabecalho #regras.controle_fita > span {
+  display: flex !important;
+}
+
+/* A??es e encerramento afastados da fita do canto superior direito. */
+body.em_partida .resumo_turno {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto minmax(64px, 1fr);
+  align-items: center;
+  column-gap: 12px;
+  padding-right: 0;
+}
+.resumo_turno > .pontos_acoes {
+  justify-self: center;
+}
+@media (max-width: 700px) {
+  body.em_partida .resumo_turno {
+    grid-template-columns: minmax(0, 1fr) auto auto 52px;
+    column-gap: 6px;
+  }
+}
+
+/* Contador de ações e encerramento com maior legibilidade. */
+.jogo .resumo_turno .pontos_acoes {
+  font-size: 26px;
+  gap: 9px;
+}
+.jogo .resumo_turno .pontos_acoes small {
+  font-size: 22px;
+  margin-left: 7px;
+}
+.jogo .resumo_turno > [data-comando='encerrar'] {
+  font-size: 16px;
+  min-height: 52px;
+  padding: 10px 18px;
+  white-space: nowrap;
+}
+@media (max-width: 700px) {
+  body.em_partida .resumo_turno {
+    grid-template-columns: minmax(0, 1fr) auto 52px;
+    row-gap: 8px;
+  }
+  .resumo_turno > div {
+    grid-column: 1/-1;
+    padding-right: 58px;
+  }
+  .resumo_turno > .pontos_acoes {
+    grid-column: 1;
+    justify-self: end;
+  }
+  .resumo_turno > [data-comando='encerrar'] {
+    grid-column: 2;
+  }
+  .jogo .resumo_turno .pontos_acoes {
+    font-size: 23px;
+    gap: 7px;
+  }
+  .jogo .resumo_turno .pontos_acoes small {
+    font-size: 20px;
+  }
+  .jogo .resumo_turno > [data-comando='encerrar'] {
+    font-size: 14px;
+    min-height: 46px;
+    padding: 8px 12px;
+  }
+}
+
+/* Ações restantes em um controle único, dividido por cores. */
+.jogo .resumo_turno .pontos_acoes {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background: var(--painel);
+  height: 52px;
+  overflow: hidden;
+}
+.jogo .resumo_turno .pontos_acoes > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  padding: 0 9px;
+  background: var(--divisoria);
+  color: var(--preto);
+  font-size: 22px;
+}
+.jogo .resumo_turno .pontos_acoes > span.restante {
+  background: var(--amarelo);
+  color: var(--preto);
+}
+.jogo .resumo_turno .pontos_acoes small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0 14px;
+  color: var(--texto);
+  font-size: 22px;
+}
+.jogo .resumo_turno .pontos_acoes > span:is(.acao_prevista, .acao_gasta) {
+  background: var(--rosa);
+  color: var(--texto);
+}
+#aplicacao[data-fase-pulso='apagado']
+  .resumo_turno
+  .pontos_acoes
+  > span:is(.acao_prevista, .acao_gasta) {
+  background: var(--divisoria);
+  color: var(--preto);
+}
+#aplicacao[data-fase-pulso='apagado'] .resumo_turno .pontos_acoes > span.restante.acao_prevista {
+  background: var(--amarelo);
+}
+@media (max-width: 700px) {
+  .jogo .resumo_turno .pontos_acoes {
+    height: 46px;
+  }
+  .jogo .resumo_turno .pontos_acoes > span {
+    min-width: 27px;
+    padding: 0 6px;
+    font-size: 18px;
+  }
+  .jogo .resumo_turno .pontos_acoes small {
+    font-size: 20px;
+    padding: 0 10px;
+  }
+}
+
+/* Indicador e encerramento formam um conjunto contínuo e centralizado. */
+body.em_partida .resumo_turno {
+  column-gap: 0;
+}
+.jogo .resumo_turno > .pontos_acoes {
+  height: 52px;
+  align-self: stretch;
+  margin: 0;
+}
+.jogo .resumo_turno > [data-comando='encerrar'] {
+  height: 52px;
+  min-height: 52px;
+  margin: 0;
+}
+@media (max-width: 700px) {
+  body.em_partida .resumo_turno {
+    grid-template-columns: minmax(0, 1fr) auto auto minmax(0, 1fr);
+  }
+  .resumo_turno > .pontos_acoes {
+    grid-column: 2;
+    justify-self: stretch;
+  }
+  .resumo_turno > [data-comando='encerrar'] {
+    grid-column: 3;
+  }
+  .jogo .resumo_turno > .pontos_acoes {
+    height: 46px;
+  }
+  .jogo .resumo_turno > [data-comando='encerrar'] {
+    height: 46px;
+    min-height: 46px;
+  }
+}
+
+/* Destaque completo do encerramento ao apontar ou focar. */
+.jogo .resumo_turno > [data-comando='encerrar']:hover,
+.jogo .resumo_turno > [data-comando='encerrar']:focus-visible {
+  background: var(--texto);
+  border-color: var(--texto);
+  color: var(--preto);
+}
+
+/* A confirmação usa o azul da paleta; voltar mantém amarelo. */
+body #confirmacao #aceitar_confirmacao.controle_fita {
+  --cor_fita: var(--azul);
+  --texto_fita: var(--preto);
+}
+body #confirmacao #aceitar_confirmacao.controle_fita:hover,
+body #confirmacao #aceitar_confirmacao.controle_fita:focus-visible {
+  --cor_fita: var(--texto);
+}
+/* Ações gastas permanecem cinza; apenas o gasto previsto pisca. */
+.jogo .resumo_turno .pontos_acoes > span:not(.restante) {
+  background: var(--divisoria);
+  color: var(--preto);
+}
+
+/* Play acompanha o cinza da divis?ria de onde a fita nasce. */
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita.fita_iniciar:has(> span) {
+  --cor_fita: var(--divisoria);
+  --texto_fita: var(--preto);
+}
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita.fita_iniciar:hover,
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita.fita_iniciar:focus-visible {
+  --cor_fita: var(--texto);
+}
+body #confirmacao #aceitar_confirmacao.controle_fita {
+  --cor_fita: var(--azul);
+}
+body #confirmacao #aceitar_confirmacao.controle_fita:hover,
+body #confirmacao #aceitar_confirmacao.controle_fita:focus-visible {
+  --cor_fita: var(--texto);
+}
+
+/* A barra cobre o nascimento das fitas, sem fresta entre as camadas. */
+.navegacao_fitas {
+  position: relative;
+  isolation: isolate;
+}
+.navegacao_fitas::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -6px;
+  height: 6px;
+  background: var(--divisoria);
+  z-index: 3;
+  pointer-events: none;
+}
+body :is(#aplicacao, #confirmacao) .navegacao_fitas > button.controle_fita::before {
+  top: -2px;
+}
+
+/* Contador e encerramento compartilham a mesma caixa e alinhamento. */
+body.em_partida .resumo_turno {
+  grid-template-columns: minmax(0, 1fr) auto minmax(64px, 1fr);
+}
+body.em_partida .jogo .resumo_turno > .controles_turno {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex: none;
+  grid-column: 2;
+  grid-row: 1;
+  padding: 0;
+  min-width: 0;
+  justify-self: center;
+}
+.jogo .resumo_turno .controles_turno > .pontos_acoes {
+  height: 52px;
+  align-self: center;
+  flex: none;
+  margin: 0;
+}
+.jogo .resumo_turno .controles_turno > [data-comando='encerrar'] {
+  height: 52px;
+  min-height: 52px;
+  padding: 10px 18px;
+  margin: 0;
+  font-size: 16px;
+  white-space: nowrap;
+  align-self: center;
+}
+.jogo .resumo_turno .controles_turno > [data-comando='encerrar']:is(:hover, :focus-visible) {
+  background: var(--texto);
+  border-color: var(--texto);
+  color: var(--preto);
+}
+@media (max-width: 700px) {
+  body.em_partida .resumo_turno {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.em_partida .jogo .resumo_turno > .controles_turno {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .jogo .resumo_turno .controles_turno > .pontos_acoes {
+    height: 46px;
+  }
+  .jogo .resumo_turno .controles_turno > [data-comando='encerrar'] {
+    height: 46px;
+    min-height: 46px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+/* Uma geometria única para corpo, contorno e sombra da fita ATIVA. */
+#aplicacao
+  .modo_ativar
+  .carta_ampliada
+  .conteudo_detalhes
+  button.habilidade_ativa:not(:disabled)::before,
+#aplicacao
+  .modo_ativar
+  .carta_ampliada
+  .conteudo_detalhes
+  button.habilidade_ativa:not(:disabled)::after {
+  content: none !important;
+}
+.fita_bloco_ativa {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - 6px);
+  translate: -50% 0;
+  width: 48px;
+  height: 56px;
+  display: block;
+  z-index: 5;
+  pointer-events: none;
+}
+.fita_bloco_ativa > svg {
+  display: block;
+  width: 48px;
+  height: 56px;
+  overflow: visible;
+}
+.fita_bloco_ativa .sombra_fita_unica {
+  fill: none;
+  stroke: var(--preto);
+  stroke-opacity: 0.53;
+  stroke-width: 6;
+  stroke-linejoin: miter;
+}
+.fita_bloco_ativa .corpo_fita_unica {
+  fill: var(--amarelo);
+}
+.fita_bloco_ativa .contorno_fita_unica {
+  fill: none;
+  stroke: var(--texto);
+  stroke-width: 6;
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+}
+.fita_bloco_ativa > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  color: var(--texto);
+  font:
+    700 25px/1 Comfortaa,
+    sans-serif;
+}
+#aplicacao[data-fase-pulso='apagado'] .fita_bloco_ativa .contorno_fita_unica {
+  visibility: hidden;
+}
+@media (hover: hover) {
+  #aplicacao[data-fase-pulso='aceso']
+    button.habilidade_ativa:not(:disabled):hover
+    .corpo_fita_unica {
+    fill: var(--texto);
+  }
+  #aplicacao[data-fase-pulso='aceso']
+    button.habilidade_ativa:not(:disabled):hover
+    .fita_bloco_ativa
+    > span {
+    color: var(--preto);
+  }
+}
+
+/* O manual mostra os mesmos segmentos e ícones usados na partida. */
+.manual_contador {
+  margin: 28px 0;
+  padding: 18px;
+  background: var(--painel);
+}
+.manual_contador figure {
+  margin: 16px 0;
+}
+.manual_contador figcaption {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 12px;
+  color: var(--texto);
+}
+.demo_controles_turno {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: 100%;
+  font-weight: 700;
+}
+.demo_segmentos {
+  display: flex;
+  height: 46px;
+  align-items: stretch;
+}
+.demo_segmentos > span,
+.demo_segmentos > strong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 18px;
+}
+.demo_segmentos > strong {
+  background: var(--painel);
+  color: var(--texto);
+}
+.demo_segmentos .disponivel,
+.legenda_contador .disponivel {
+  background: var(--amarelo);
+  color: var(--preto);
+}
+.demo_segmentos .gasta,
+.legenda_contador .gasta {
+  background: var(--divisoria);
+  color: var(--preto);
+}
+.demo_encerrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px;
+  background: var(--amarelo);
+  color: var(--preto);
+  font-size: 13px;
+}
+.legenda_contador {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.legenda_contador li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.legenda_contador i {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.legenda_contador .prevista {
+  background: var(--rosa);
+}
+.manual_lista_fitas {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.manual_lista_fitas li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.45;
+  min-width: 0;
+}
+.manual_fita_navegacao {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 36px;
+  height: 56px;
+  padding-top: 12px;
+  flex: none;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%);
+  font:
+    700 24px/1 Comfortaa,
+    sans-serif;
+  background: var(--amarelo);
+  color: var(--preto);
+}
+.manual_fita_navegacao.vermelha {
+  background: var(--rosa);
+  color: var(--texto);
+}
+.manual_fita_navegacao.azul {
+  background: var(--azul);
+}
+.manual_fita_navegacao.cinza {
+  background: var(--divisoria);
+}
+@media (max-width: 650px) {
+  .manual_lista_fitas {
+    grid-template-columns: 1fr;
+  }
+  .manual_contador {
+    padding: 12px;
+  }
+  .demo_segmentos > span,
+  .demo_segmentos > strong {
+    padding: 0 7px;
+    font-size: 16px;
+  }
+  .demo_encerrar {
+    font-size: 12px;
+  }
+}
+
+/* Símbolos vetoriais com a mesma área e espessura de traço. */
+svg.icone_navegacao {
+  display: block;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  overflow: visible;
+}
+.controle_fita > span > svg.icone_navegacao,
+#consulta .icone_sumario > svg.icone_navegacao {
+  width: 28px;
+  height: 28px;
+}
+.manual_fita_navegacao > svg.icone_navegacao {
+  width: 22px;
+  height: 22px;
+}
+/* A fita ATIVA mantém a largura própria, sem herdar a largura do texto. */
+#aplicacao .carta_ampliada .conteudo_detalhes button.habilidade_ativa > .fita_bloco_ativa {
+  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
+  height: 56px;
+  padding: 0;
+  margin: 0;
+}
+#aplicacao .fita_bloco_ativa > span {
+  width: 48px;
+  max-width: 48px;
+}
+
+/* Durante a partida, a mesa começa pelo turno; a marca deixa de ocupar uma faixa. */
+body:has(> .cabecalho #regras:not([hidden])) > .cabecalho {
+  position: fixed;
+  inset: 0 0 auto;
+  display: block;
+  height: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  gap: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: transparent;
+}
+body:has(> .cabecalho #regras:not([hidden])) > .cabecalho > .marca {
+  display: none;
+}
+body:has(> .cabecalho #regras:not([hidden])) > .cabecalho > #regras {
+  pointer-events: auto;
+}
+body.em_partida .jogo .resumo_turno {
+  min-height: 82px;
+}
+.jogo .resumo_turno > div:not(.controles_turno) > .rotulo_turno {
+  font-size: 19px;
+  line-height: 1.4;
+}
+.jogo .resumo_turno > div:not(.controles_turno) > strong {
+  font-size: 22px;
+  line-height: 1.3;
+}
+@media (max-width: 700px) {
+  body.em_partida .jogo .resumo_turno {
+    min-height: 0;
+    row-gap: 10px;
+    padding-bottom: 4px;
+  }
+  .jogo .resumo_turno > div:not(.controles_turno) {
+    padding-right: 60px;
+  }
+  .jogo .resumo_turno > div:not(.controles_turno) > .rotulo_turno {
+    font-size: 17px;
+  }
+  .jogo .resumo_turno > div:not(.controles_turno) > strong {
+    font-size: 20px;
+  }
+}
+
+/* As listas de poderes terminam com uma fita A/P, ligada à borda inferior. */
+.painel_poderes:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+.painel_poderes > header {
+  flex: none;
+}
+.conteudo_lista_poderes {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.conteudo_lista_poderes > article {
+  padding: 12px 0;
+  border-top: 3px solid var(--divisoria);
+}
+.fita_lista_poderes {
+  --cor_fita_lista: var(--amarelo);
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  translate: -50% 0;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 40px;
+  height: 64px;
+  padding: 13px 0 0;
+  color: var(--preto);
+  font:
+    700 24px/1 Comfortaa,
+    sans-serif;
+  z-index: 11;
+  pointer-events: none;
+}
+.painel_passivas .fita_lista_poderes {
+  --cor_fita_lista: var(--azul);
+}
+.fita_lista_poderes::before {
+  content: '';
+  position: absolute;
+  inset: -2px 0 0;
+  background: var(--cor_fita_lista);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 20px), 0 100%);
+  z-index: -1;
+}
+.fita_lista_poderes::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 26px;
+  background: var(--preto);
+  opacity: 0.53;
+  clip-path: polygon(0 20px, 50% 0, 100% 20px, 100% 100%, 50% 6px, 0 100%);
+  z-index: -2;
+}
+
+/* A fita nasce abaixo da borda externa da lista, como no descarte. */
+.painel_poderes > .fita_lista_poderes {
+  top: calc(100% + 6px);
+}
+.painel_poderes > .fita_lista_poderes::before {
+  top: -1px;
+}
+
+/* O contorno fica inteiramente por fora: 6 px nas laterais e nas diagonais. */
+#aplicacao .carta_ampliada .conteudo_detalhes button.habilidade_ativa > .fita_bloco_ativa {
+  height: 66px;
+}
+.fita_bloco_ativa > svg {
+  height: 66px;
+}
+.fita_bloco_ativa .contorno_fita_unica {
+  stroke: none;
+  fill: var(--texto);
+}
+.fita_bloco_ativa :is(.sombra_fita_simples, .sombra_fita_contornada) {
+  fill: var(--preto);
+  fill-opacity: 0.53;
+  stroke: none;
+}
+.fita_bloco_ativa .sombra_fita_simples {
+  visibility: hidden;
+}
+#aplicacao[data-fase-pulso='apagado'] .fita_bloco_ativa .sombra_fita_contornada {
+  visibility: hidden;
+}
+#aplicacao[data-fase-pulso='apagado'] .fita_bloco_ativa .sombra_fita_simples {
+  visibility: visible;
+}
+
+/* Exclamação no centro da parte visível, sem métricas de fonte. */
+.exclamacao_fita_unica {
+  fill: var(--texto);
+  stroke: none;
+}
+@media (hover: hover) {
+  #aplicacao[data-fase-pulso='aceso']
+    button.habilidade_ativa:not(:disabled):hover
+    .exclamacao_fita_unica {
+    fill: var(--preto);
+  }
+}
+#aplicacao .jogo .carta .sinal_ativa {
+  padding: 0 0 14px;
+  align-items: center;
+  justify-content: center;
+}
+.sinal_ativa > svg.icone_exclamacao {
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+#aplicacao .fita_descarte {
+  padding: 0 0 var(--ponta_marcador_ui);
+}
+#aplicacao .jogo:is(.modo_construir, .modo_mover, .modo_ativar) .orientacao_acao::after {
+  padding: 0 0 var(--ponta_marcador_ui);
+}
+#aplicacao .opcoes_turno .fita_botao {
+  padding: 0 0 var(--ponta_marcador_ui);
+}
+.fita_lista_poderes {
+  padding-top: 10px;
+}
+
+/* Decisão de proteção no mesmo padrão de confirmação e recusa. */
+body #aplicacao .resolucao_opcoes.navegacao_fitas {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+}
+body #aplicacao button.controle_fita.fita_confirmar {
+  --cor_fita: var(--azul);
+  --texto_fita: var(--preto);
+}
+body #aplicacao button.controle_fita.fita_confirmar:hover,
+body #aplicacao button.controle_fita.fita_confirmar:focus-visible {
+  --cor_fita: var(--texto);
+}
+
+/* A mesma exclamação Comfortaa, com a fita inteiramente abaixo do bloco. */
+#aplicacao .carta_ampliada .conteudo_detalhes button.habilidade_ativa > .fita_bloco_ativa {
+  top: calc(100% + 6px);
+}
+#aplicacao .fita_bloco_ativa > span {
+  top: 0;
+  height: 28px;
+  font:
+    700 25px/1 Comfortaa,
+    sans-serif;
+  color: var(--texto);
+}
+#aplicacao .jogo .carta .sinal_ativa {
+  font:
+    700 25px/1 Comfortaa,
+    sans-serif;
+}
+#aplicacao .jogo.modo_ativar .orientacao_acao::after,
+#aplicacao .opcoes_turno .fita_botao_ativar {
+  font:
+    700 25px/1 Comfortaa,
+    sans-serif;
+}
+@media (hover: hover) {
+  #aplicacao[data-fase-pulso='aceso']
+    button.habilidade_ativa:not(:disabled):hover
+    .fita_bloco_ativa
+    > span {
+    color: var(--preto);
+  }
+}
+
+/* Compensação óptica da exclamação Comfortaa, preservando o desenho da fonte. */
+#aplicacao .fita_bloco_ativa > span {
+  translate: 1.1px 2px;
+}
+#aplicacao .sinal_ativa > .simbolo_exclamacao {
+  display: block;
+  flex: none;
+  translate: 1.1px 2px;
+  font: inherit;
+  line-height: 1;
+}
+
+/* Arraste direto nas cartas próprias, inclusive pelo toque. */
+.fila_compartilhada .carta[data-propria='true'] {
+  touch-action: none;
+}
+
+/* Vizinhas possíveis piscam; o destino sob o arraste fica amarelo fixo. */
+#aplicacao[data-fase-pulso] .jogo .carta.vizinha_disponivel {
+  border: 6px dashed var(--texto) !important;
+  animation: none !important;
+}
+#aplicacao[data-fase-pulso='apagado'] .jogo .carta.vizinha_disponivel:not(.vizinha_movimento) {
+  border-color: transparent !important;
+}
+#aplicacao[data-fase-pulso] .jogo .carta.vizinha_movimento {
+  border: 6px dashed var(--amarelo) !important;
+  animation: none !important;
+}
+#aplicacao[data-fase-pulso] .jogo .carta.vizinha_disponivel[data-traseira='true']::before {
+  display: none !important;
+}
+
+/* A frente tem divisória azul permanente; construção mantém seu pisca temporário. */
+.jogo .fila_compartilhada > .divisoria_frente {
+  --cor_separacao: var(--azul);
+}
+.jogo .fila_compartilhada > .divisoria_ambas {
+  width: 14px;
+  flex-basis: 14px;
+}
+.divisoria_ambas > i {
+  width: 14px;
+  background: linear-gradient(
+    to right,
+    var(--rosa) 0 6px,
+    transparent 6px 8px,
+    var(--azul) 8px 14px
+  );
+}
+
+/* Arraste sobre a mesa: a carta sobe de camada e a vizinha ocupa a vaga na prévia. */
+.carta_arraste_sobreposta {
+  position: fixed !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  pointer-events: none !important;
+  z-index: 90;
+  overflow: visible;
+}
+.carta_arraste_sobreposta > .carta {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  box-shadow: 8px 12px 0 #0c090d88;
+  border: 6px solid var(--texto) !important;
+  transform: scale(1.025) !important;
+  transform-origin: center center;
+  opacity: 1 !important;
+}
+.carta_arraste_sobreposta > .carta::before,
+.carta_arraste_sobreposta > .carta::after {
+  display: none !important;
+}
+#aplicacao .jogo .carta.carta_pressionada {
+  border-color: var(--texto) !important;
+}
+#aplicacao[data-fase-pulso] .jogo .carta.previa_troca {
+  border: 6px solid var(--divisoria) !important;
+  z-index: 3;
+  box-shadow: 3px 5px 0 #0c090d55;
+  animation: none !important;
+}
+#aplicacao[data-fase-pulso] .jogo .carta.previa_troca::before {
+  display: none !important;
+}
+
+.carta_arraste_sobreposta > .carta {
+  transform: none !important;
+}
+
+/* Encaixes de construção: frente azul e exceção de entrada na traseira em vermelho. */
+.jogo .fila_compartilhada > .zona_construcao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex: 0 0 var(--largura_carta);
+  width: var(--largura_carta);
+  height: var(--altura_carta);
+  min-height: var(--altura_carta);
+  align-self: flex-start;
+  margin: 0;
+  padding: 12px 6px;
+  border: 6px solid var(--azul);
+  background: var(--azul);
+  color: var(--preto);
+  font:
+    700 13px/1.4 Comfortaa,
+    sans-serif;
+  box-shadow: var(--sombra_painel);
+  touch-action: none;
+}
+.jogo .fila_compartilhada > .zona_construcao_traseira {
+  border-color: var(--rosa);
+  background: var(--rosa);
+  color: var(--texto);
+}
+.zona_construcao .icone_zona_construcao {
+  font:
+    700 48px/1 Comfortaa,
+    sans-serif;
+}
+.zona_construcao .icone_encaixe_construcao {
+  display: none;
+}
+.jogo .fila_compartilhada > .zona_construcao.encaixe_valido {
+  border-color: var(--texto);
+  box-shadow: 6px 8px 0 #0c090d88;
+}
+.zona_construcao.encaixe_valido .icone_zona_construcao {
+  display: none;
+}
+.zona_construcao.encaixe_valido .icone_encaixe_construcao {
+  display: block;
+}
+.zona_construcao .icone_encaixe_construcao svg {
+  width: 48px;
+  height: 48px;
+}
+.modo_construir .faixa_mao .carta {
+  touch-action: none;
+  cursor: grab;
+}
+#aplicacao.arrastando_construcao .carta_ampliada {
+  visibility: hidden;
+  pointer-events: none;
+}
+#aplicacao.arrastando_construcao .mao_recolhida.aberta {
+  transform: translateY(calc(100% - 48px)) !important;
+  pointer-events: none;
+}
+/* A carta deslocada na prévia de Mover pisca em amarelo. */
+#aplicacao[data-fase-pulso='aceso'] .jogo .carta.previa_troca {
+  border-color: var(--amarelo) !important;
+}
+#aplicacao[data-fase-pulso='apagado'] .jogo .carta.previa_troca {
+  border-color: var(--divisoria) !important;
+}
+
+/* Feedback imediato da carta que bloqueia a troca, mantendo a barreira. */
+#aplicacao[data-fase-pulso='aceso'] .jogo .carta.bloqueio_movimento {
+  border: 6px solid var(--rosa) !important;
+}
+#aplicacao[data-fase-pulso='apagado'] .jogo .carta.bloqueio_movimento {
+  border: 6px solid var(--divisoria) !important;
+}
+#aplicacao[data-fase-pulso] .jogo .carta.bloqueio_movimento::before {
+  display: none !important;
+}
+body:has(#aplicacao[data-fase-pulso='aceso'])
+  .carta_arraste_sobreposta.bloqueio_movimento
+  > .carta {
+  border-color: var(--rosa) !important;
+}
+body:has(#aplicacao[data-fase-pulso='apagado'])
+  .carta_arraste_sobreposta.bloqueio_movimento
+  > .carta {
+  border-color: var(--texto) !important;
+}
+#mensagem.bloqueio:not([hidden]):not(:empty) {
+  border: 0;
+  background: var(--rosa);
+  color: var(--texto);
+  padding: 18px 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+}
+.faixa_mao .carta {
+  touch-action: none;
+  cursor: grab;
+}
+@media (max-width: 500px) {
+  #mensagem.bloqueio:not([hidden]):not(:empty) {
+    font-size: 16px;
+    padding: 16px;
+  }
+}
+
+/* O gesto iniciado na al?a da m?o pode continuar at? uma carta. */
+.abrir_mao {
+  touch-action: none;
+}
+
+/* A carta e o encaixe correto pulsam em azul antes de soltar. */
+body:has(#aplicacao[data-fase-pulso='aceso']) .arraste_construcao.construcao_no_encaixe > .carta {
+  border-color: var(--azul) !important;
+}
+body:has(#aplicacao[data-fase-pulso='apagado']) .arraste_construcao.construcao_no_encaixe > .carta {
+  border-color: var(--texto) !important;
+}
+#aplicacao[data-fase-pulso='aceso'] .jogo .zona_construcao.encaixe_valido {
+  border-color: var(--azul) !important;
+}
+#aplicacao[data-fase-pulso='apagado'] .jogo .zona_construcao.encaixe_valido {
+  border-color: var(--texto) !important;
+}
+
+/* O marcador da carta arrastada acompanha o mesmo pulso da borda. */
+body:has(#aplicacao[data-fase-pulso='aceso'])
+  .arraste_construcao.construcao_no_encaixe
+  .sinal_construir {
+  visibility: visible !important;
+}
+body:has(#aplicacao[data-fase-pulso='apagado'])
+  .arraste_construcao.construcao_no_encaixe
+  .sinal_construir {
+  visibility: hidden !important;
+}
+
+/* Áudio: acesso compacto, sem ocupar a área da mesa. */
+#ajustar_som {
+  position: fixed;
+  top: 0;
+  right: 88px;
+  z-index: 29;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 9px;
+  border: 0;
+  border-bottom: 4px solid var(--divisoria);
+  background: var(--painel);
+  color: var(--divisoria);
+  box-shadow: 4px 5px 0 #0c090d66;
+  cursor: pointer;
+}
+#ajustar_som svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+#ajustar_som .corte_som {
+  display: none;
+}
+#ajustar_som[data-silenciado='true'] .ondas_som {
+  display: none;
+}
+#ajustar_som[data-silenciado='true'] .corte_som {
+  display: block;
+}
+#ajustar_som:hover,
+#ajustar_som:focus-visible {
+  background: var(--divisoria);
+  color: var(--preto);
+  border-bottom-color: var(--texto);
+  outline: 0;
+}
+#ajustes_audio {
+  box-sizing: border-box;
+  width: min(420px, calc(100vw - 28px));
+  max-height: calc(100dvh - 28px);
+  margin: auto;
+  padding: 24px;
+  border: 6px solid var(--divisoria);
+  background: var(--painel);
+  color: var(--texto);
+  box-shadow: 8px 12px 0 #0c090d88;
+  overflow: auto;
+}
+#ajustes_audio::backdrop {
+  background: #0c090dcc;
+}
+#ajustes_audio form {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+}
+#ajustes_audio h2 {
+  font-size: 26px;
+  margin: 0 0 2px;
+  line-height: 1.3;
+}
+#ajustes_audio label {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#ajustes_audio output {
+  margin-left: auto;
+  color: var(--amarelo);
+  font-variant-numeric: tabular-nums;
+}
+#ajustes_audio input[type='checkbox'] {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--azul);
+  margin: 0;
+}
+#ajustes_audio input[type='range'] {
+  box-sizing: border-box;
+  appearance: auto;
+  accent-color: var(--amarelo);
+  height: 30px;
+  min-height: 30px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+#ajustes_audio #audio_efeitos {
+  accent-color: var(--azul);
+}
+.audio_rodape {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  border-top: 6px solid var(--divisoria);
+  padding-top: 18px;
+}
+#ajustes_audio button {
+  padding: 12px 8px;
+  min-height: 48px;
+  font:
+    700 13px/1.5 Comfortaa,
+    sans-serif;
+  border: 4px solid var(--divisoria);
+  background: var(--fundo);
+  color: var(--texto);
+}
+#ajustes_audio button[type='submit'] {
+  background: var(--azul);
+  color: var(--preto);
+  border-color: var(--azul);
+}
+#ajustes_audio button:hover,
+#ajustes_audio button:focus-visible {
+  border-color: var(--texto);
+  outline: 0;
+}
+#ajustes_audio input:focus-visible {
+  outline: 3px solid var(--texto);
+  outline-offset: 4px;
+}
+@media (max-width: 700px) {
+  #ajustar_som {
+    right: 72px;
+  }
+}
+@media (max-height: 520px) {
+  #ajustes_audio {
+    padding: 16px;
+  }
+  #ajustes_audio form {
+    gap: 10px;
+  }
+}
+
+/* Os ajustes usam as mesmas fitas de navegação da partida. */
+body :is(#ajustar_som.controle_fita, #ajustes_audio button.controle_fita) {
+  --cor_fita: var(--divisoria);
+  --texto_fita: var(--preto);
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 0 56px;
+  width: 56px;
+  min-width: 56px;
+  max-width: 56px;
+  height: 92px;
+  min-height: 92px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--texto_fita);
+  box-shadow: none;
+  overflow: visible;
+  transform: none;
+  translate: none;
+  cursor: pointer;
+}
+body :is(#ajustar_som.controle_fita, #ajustes_audio button.controle_fita)::before {
+  content: '';
+  position: absolute;
+  inset: -2px 0 0;
+  z-index: -1;
+  background: var(--cor_fita);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 24px), 0 100%);
+}
+body :is(#ajustar_som.controle_fita, #ajustes_audio button.controle_fita)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 30px;
+  z-index: -2;
+  background: var(--preto);
+  opacity: 0.4;
+  clip-path: polygon(0 24px, 50% 0, 100% 24px, 100% 100%, 50% 6px, 0 100%);
+  pointer-events: none;
+}
+body :is(#ajustar_som.controle_fita, #ajustes_audio button.controle_fita) > span {
+  position: absolute;
+  inset: 0 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  pointer-events: none;
+}
+body #ajustar_som.controle_fita {
+  position: fixed;
+  top: 0;
+  right: 86px;
+  z-index: 29;
+  pointer-events: auto;
+}
+#ajustar_som.controle_fita svg {
+  width: 28px;
+  height: 28px;
+}
+body #ajustes_audio button.controle_fita {
+  --cor_fita: var(--azul);
+  --texto_fita: var(--preto);
+}
+#ajustes_audio .controle_fita svg {
+  width: 32px;
+  height: 32px;
+}
+body
+  :is(#ajustar_som.controle_fita, #ajustes_audio button.controle_fita):is(:hover, :focus-visible) {
+  --cor_fita: var(--texto);
+  --texto_fita: var(--preto);
+  border: 0;
+  background: transparent;
+  color: var(--texto_fita);
+  outline: 0;
+}
+#ajustes_audio .audio_rodape {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0 0 6px;
+  border-top: 6px solid var(--divisoria);
+}
+@media (max-width: 700px) {
+  body :is(#ajustar_som.controle_fita, #ajustes_audio button.controle_fita) {
+    width: 48px;
+    min-width: 48px;
+    max-width: 48px;
+    flex-basis: 48px;
+    height: 76px;
+    min-height: 76px;
+  }
+  body #ajustar_som.controle_fita {
+    right: 72px;
+  }
+}
+@media (max-height: 720px) {
+  body :is(#ajustar_som.controle_fita, #ajustes_audio button.controle_fita) {
+    height: 68px;
+    min-height: 68px;
+  }
+}
+
+body button#ajustar_som.controle_fita {
+  position: fixed;
+  inset: 0 86px auto auto;
+}
+body button#ajustar_som.controle_fita[data-silenciado='true'] {
+  --cor_fita: var(--rosa);
+  --texto_fita: var(--texto);
+}
+body button#ajustar_som.controle_fita:hover,
+body button#ajustar_som.controle_fita:focus-visible {
+  --cor_fita: var(--texto);
+  --texto_fita: var(--preto);
+}
+#ajustes_audio {
+  padding: 22px 24px;
+}
+#ajustes_audio form {
+  gap: 16px;
+}
+#ajustes_audio h2 {
+  margin: 0;
+  padding: 0 0 14px;
+  border-bottom: 6px solid var(--divisoria);
+  font-size: 26px;
+}
+#ajustes_audio .audio_ligar {
+  position: relative;
+  gap: 12px;
+  padding: 12px;
+  background: var(--fundo_carta);
+  cursor: pointer;
+}
+#ajustes_audio .audio_ligar strong {
+  font-size: 16px;
+  line-height: 1.4;
+}
+#ajustes_audio .audio_ligar input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+}
+#ajustes_audio .audio_estado {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  display: grid;
+  place-items: center;
+  background: var(--azul);
+  color: var(--preto);
+}
+#ajustes_audio .audio_estado svg {
+  width: 23px;
+  height: 23px;
+  display: block;
+}
+#ajustes_audio .audio_x {
+  display: none;
+}
+#ajustes_audio .audio_ligar input:not(:checked) + .audio_estado {
+  background: var(--rosa);
+  color: var(--texto);
+}
+#ajustes_audio .audio_ligar input:not(:checked) + .audio_estado .audio_check {
+  display: none;
+}
+#ajustes_audio .audio_ligar input:not(:checked) + .audio_estado .audio_x {
+  display: block;
+}
+#ajustes_audio .audio_ligar input:focus-visible + .audio_estado {
+  outline: 3px solid var(--texto);
+  outline-offset: 4px;
+}
+#ajustes_audio #valor_efeitos {
+  color: var(--azul);
+}
+@media (max-width: 700px) {
+  body button#ajustar_som.controle_fita {
+    right: 72px;
+  }
+}
+@media (max-height: 560px) {
+  #ajustes_audio {
+    padding: 16px 20px;
+  }
+  #ajustes_audio form {
+    gap: 10px;
+  }
+  #ajustes_audio h2 {
+    padding-bottom: 10px;
+  }
+}
+
+/* Ícones dos modos com a mesma coluna visual; T centralizado no par J1/J2. */
+.selecao_partida .marca_modo {
+  width: 90px;
+  min-width: 90px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+.selecao_partida .marca_modo i {
+  width: 42px;
+  height: 54px;
+  font-size: 16px;
+  flex: none;
+}
+.selecao_partida .seta_modo {
+  font-size: 34px;
+  line-height: 1;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.14s ease;
+}
+@media (hover: hover) {
+  .selecao_partida .escolher_modo:hover .seta_modo {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.selecao_partida .escolher_modo:focus-visible .seta_modo,
+.selecao_partida .escolher_modo:active .seta_modo {
+  opacity: 1;
+  visibility: visible;
+}
+@media (max-width: 850px) {
+  .selecao_partida .marca_modo {
+    width: 74px;
+    min-width: 74px;
+    gap: 6px;
+  }
+  .selecao_partida .marca_modo i {
+    width: 34px;
+    height: 44px;
+    font-size: 14px;
+  }
+  .selecao_partida .seta_modo {
+    font-size: 29px;
+  }
+}
+
+/* Reserva a largura real dos ícones ampliados, sem invadir os textos. */
+.selecao_partida .escolher_modo {
+  grid-template-columns: 90px minmax(0, 1fr) 30px;
+  column-gap: 20px;
+}
+.selecao_partida .escolher_modo > strong {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  white-space: normal;
+}
+.selecao_partida .escolher_modo > span:last-of-type {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+}
+@media (max-width: 850px) {
+  .selecao_partida .escolher_modo {
+    gap: 12px;
+  }
+}
+
+/* Avisos acima de cartas, gavetas e diálogos, sem interceptar o próximo gesto. */
+#mensagem:not([hidden]):not(:empty) {
+  inset: auto;
+  left: 50%;
+  bottom: max(28px, env(safe-area-inset-bottom));
+  translate: -50% 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  font-size: 17px;
+  line-height: 1.5;
+  box-shadow: 8px 12px 0 #0c090d88;
+}
+#mensagem::backdrop {
+  background: transparent;
+  pointer-events: none;
+}
+#mensagem.cancelamento:not([hidden]):not(:empty) {
+  top: 50%;
+  bottom: auto;
+  translate: -50% -50%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: min(520px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  padding: 22px;
+  border: 6px solid var(--rosa);
+  background: var(--painel);
+  color: var(--texto);
+  text-align: left;
+  white-space: normal;
+}
+.icone_aviso_cancelado {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  background: var(--rosa);
+  color: var(--texto);
+}
+.icone_aviso_cancelado svg {
+  width: 28px;
+  height: 28px;
+}
+.texto_aviso_cancelado {
+  display: grid;
+  gap: 6px;
+}
+.texto_aviso_cancelado strong {
+  font-size: 20px;
+  line-height: 1.35;
+}
+.texto_aviso_cancelado > span {
+  font-size: 16px;
+  line-height: 1.5;
+}
+@media (max-width: 500px) {
+  #mensagem.cancelamento:not([hidden]):not(:empty) {
+    padding: 18px;
+    gap: 12px;
+  }
+  .texto_aviso_cancelado strong {
+    font-size: 18px;
+  }
+  .texto_aviso_cancelado > span {
+    font-size: 15px;
+  }
+}
+
+/* Legenda compacta da voz: apenas símbolo, nome e ação concluída. */
+#aviso_personagem:not([hidden]) {
+  position: fixed;
+  inset: auto;
+  left: 50%;
+  bottom: 20px;
+  translate: -50% 0;
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: min(640px, calc(100vw - 28px));
+  margin: 0;
+  padding: 14px 18px;
+  border: 0;
+  background: var(--cor_aviso_voz, var(--azul));
+  color: var(--texto_aviso_voz, var(--preto));
+  font:
+    700 18px/1.45 Comfortaa,
+    sans-serif;
+  box-shadow: 6px 8px 0 #0c090d88;
+  pointer-events: none;
+}
+#aviso_personagem::backdrop {
+  background: transparent;
+  pointer-events: none;
+}
+#aviso_personagem[data-acao='comprar'] {
+  --cor_aviso_voz: var(--laranja);
+  --texto_aviso_voz: var(--preto);
+}
+#aviso_personagem[data-acao='construir'] {
+  --cor_aviso_voz: var(--azul);
+}
+#aviso_personagem[data-acao='mover'] {
+  --cor_aviso_voz: var(--texto);
+}
+#aviso_personagem[data-acao='ativar'] {
+  --cor_aviso_voz: var(--amarelo);
+}
+#aviso_personagem[data-acao='descarte'] {
+  --cor_aviso_voz: var(--rosa);
+  --texto_aviso_voz: var(--texto);
+}
+.simbolo_aviso_personagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 30px;
+  width: 30px;
+  font-size: 28px;
+  line-height: 1;
+}
+.simbolo_aviso_personagem svg {
+  display: block;
+  width: 26px;
+  height: 28px;
+}
+.texto_aviso_personagem {
+  min-width: 0;
+}
+@media (max-width: 500px) {
+  #aviso_personagem:not([hidden]) {
+    font-size: 15px;
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  .simbolo_aviso_personagem {
+    flex-basis: 26px;
+    width: 26px;
+    font-size: 25px;
+  }
+}
+
+/* Uma linguagem para todos os poderes que aguardam escolha de outra carta. */
+#aplicacao[data-fase-pulso] .jogo.escolhendo_alvo .fila_compartilhada .carta.alvo {
+  border: 6px solid var(--texto) !important;
+  animation: none !important;
+  box-shadow: none;
+}
+#aplicacao[data-fase-pulso='apagado'] .jogo.escolhendo_alvo .fila_compartilhada .carta.alvo {
+  border-color: var(--divisoria) !important;
+}
+#aplicacao[data-fase-pulso] .jogo.escolhendo_alvo .fila_compartilhada .carta.alvo::before,
+#aplicacao[data-fase-pulso] .jogo.escolhendo_alvo .fila_compartilhada .carta.alvo::after {
+  display: none !important;
+}
+#aplicacao .jogo.escolhendo_alvo .sinal_traseira {
+  visibility: hidden !important;
+}
+#aplicacao .jogo.escolhendo_alvo .linha_contexto.orientacao_acao {
+  margin-top: 56px;
+  margin-bottom: 0;
+  border-block: 6px solid var(--amarelo);
+  padding: 12px;
+  z-index: 4;
+  filter: none;
+  font-size: 15px;
+  line-height: 1.5;
+}
+#aplicacao .jogo.escolhendo_alvo .orientacao_acao::after {
+  content: '!';
+  color: var(--preto);
+  background: var(--amarelo);
+  width: var(--largura_marcador_ui);
+  height: var(--altura_marcador_ui);
+  padding: 2px 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - var(--ponta_marcador_ui)), 0 100%);
+}
+@media (max-width: 500px) {
+  #aplicacao .jogo.escolhendo_alvo .linha_contexto.orientacao_acao {
+    font-size: 13px;
+    padding: 10px;
+    gap: 6px;
+  }
+}
+
+#aplicacao[data-fase-pulso] .jogo.escolhendo_alvo .carta[data-traseira='true']:not(.alvo) {
+  border-color: var(--divisoria) !important;
+  animation: none !important;
+}
+#aplicacao .jogo.escolhendo_alvo .carta[data-traseira='true']::before {
+  display: none !important;
+}
+#aplicacao .jogo.escolhendo_alvo :is(.sinal_construir, .sinal_compra) {
+  visibility: hidden !important;
+}
+
+.arraste_construcao .sinal_construir > .icone_navegacao {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* A cópia da construção usa o mesmo azul da chegada, fora da árvore da mesa. */
+body:has(#aplicacao[data-fase-pulso]) .fantasma_movimento.animacao_construcao > .carta {
+  border-color: var(--azul) !important;
+  outline: none !important;
+}
+body:has(#aplicacao[data-fase-pulso='apagado']) .fantasma_movimento.animacao_construcao > .carta {
+  border-color: var(--divisoria) !important;
+}
+body:has(#aplicacao[data-fase-pulso='apagado'])
+  .fantasma_movimento.animacao_construcao
+  .sinal_construir {
+  visibility: hidden !important;
+}
+
+#consulta .manual_ouvir_personagens {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px;
+  margin: 20px 0 24px;
+  background: var(--painel);
+  border-left: 6px solid var(--amarelo);
+  box-shadow: 6px 8px 0 #0c090d55;
+}
+#consulta .manual_ouvir_personagens strong {
+  font-size: 19px;
+  color: var(--amarelo);
+}
+#consulta .manual_ouvir_personagens p {
+  font-size: 17px;
+  margin: 6px 0 0;
+  line-height: 1.5;
+}
+#consulta .manual_som_icone {
+  flex: none;
+  font:
+    700 36px/1 Comfortaa,
+    sans-serif;
+  color: var(--amarelo);
+}
+#consulta .manual_som_status {
+  color: var(--secundario);
+}
+#consulta .manual_personagem[role='button'] {
+  cursor: pointer;
+  outline: none;
+}
+#consulta .manual_personagem[role='button']:is(:hover, :focus-visible) {
+  border-color: var(--texto) !important;
+}
+#consulta .manual_personagem.ouvindo_personagem {
+  border-color: var(--amarelo) !important;
+  box-shadow: 6px 8px 0 #0c090d66;
+}
+@media (max-width: 500px) {
+  #consulta .manual_ouvir_personagens {
+    padding: 14px;
+    gap: 12px;
+  }
+  #consulta .manual_ouvir_personagens strong {
+    font-size: 17px;
+  }
+  #consulta .manual_ouvir_personagens p {
+    font-size: 15px;
+  }
+}
+
+/* Instrução estática; estado da audição flutua sobre a área de leitura. */
+#consulta .manual_ouvir_personagens {
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 22px;
+  box-shadow: none;
+  margin: 18px 0 24px;
+}
+#consulta .manual_ouvir_personagens strong {
+  display: block;
+  font-size: 20px;
+  line-height: 1.35;
+}
+#consulta .manual_ouvir_personagens p {
+  margin: 8px 0 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--texto);
+}
+#consulta .manual_som_icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  margin-top: 1px;
+}
+#consulta .manual_som_icone svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+#consulta > .manual_som_status:not([hidden]) {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  translate: -50% 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: calc(100% - 40px);
+  padding: 14px 20px;
+  margin: 0;
+  border-left: 6px solid var(--amarelo);
+  background: var(--painel);
+  color: var(--texto);
+  box-shadow: 6px 8px 0 #0c090d99;
+  font:
+    700 18px/1.45 Comfortaa,
+    sans-serif;
+  pointer-events: none;
+  text-align: left;
+}
+#consulta > .manual_som_status::before {
+  content: '♪';
+  flex: none;
+  color: var(--amarelo);
+  font-size: 25px;
+  line-height: 1;
+}
+@media (max-width: 500px) {
+  #consulta .manual_ouvir_personagens {
+    padding: 16px;
+    gap: 12px;
+  }
+  #consulta .manual_ouvir_personagens strong {
+    font-size: 18px;
+  }
+  #consulta .manual_ouvir_personagens p {
+    font-size: 16px;
+  }
+  #consulta > .manual_som_status:not([hidden]) {
+    bottom: 16px;
+    padding: 12px 14px;
+    max-width: calc(100% - 28px);
+    font-size: 16px;
+  }
+}
+
+#consulta .manual_ouvir_personagens {
+  align-items: center;
+}
+#consulta .manual_ouvir_personagens .manual_som_icone {
+  margin-top: 0;
+  align-self: center;
+}
+#consulta > .manual_som_status:not([hidden]) {
+  border-left: 0;
+}
+
+#consulta .manual_identidade h3,
+.identidade_carta h2 {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+#consulta .manual_personagem > header .numero_personagem {
+  position: relative;
+  flex-shrink: 0;
+}
+
+#consulta > .manual_som_status::before {
+  content: '';
+  width: 22px;
+  height: 22px;
+  background: var(--amarelo);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M3 9h4l5-5v16l-5-5H3Z'/%3E%3Cpath d='M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14'/%3E%3C/svg%3E")
+    center/contain no-repeat;
+}
+
+@media (max-width: 450px) {
+  #consulta .manual_personagem > header {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 12px;
+  }
+  #consulta .manual_personagem > header > .manual_cor {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #consulta .manual_personagem > header > .numero_personagem {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+  #consulta .manual_personagem > header > .manual_identidade {
+    grid-column: 1/-1;
+    grid-row: 2;
+  }
+  #consulta .manual_personagem .manual_identidade h3 {
+    font-size: 17px;
+  }
+}
+
+/* Abertura do aplicativo: identidade do livro e carregamento em segundo plano. */
+body.apresentando {
+  overflow: hidden !important;
+}
+body.apresentando > :not(#apresentacao) {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.apresentacao_jogo {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: var(--fundo);
+  overflow: hidden;
+}
+.apresentacao_pagina {
+  position: relative;
+  display: grid;
+  grid-template-columns: 144px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 44px;
+  row-gap: 36px;
+  width: min(720px, 100%);
+  padding: 48px 36px 32px;
+  border-block: 6px solid var(--divisoria);
+}
+.apresentacao_fita {
+  position: absolute;
+  right: 20px;
+  top: -1px;
+  width: 36px;
+  height: 62px;
+  background: var(--rosa);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 17px), 0 100%);
+}
+.apresentacao_emblema {
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(7px 9px 0 #0c090d88);
+}
+.apresentacao_emblema img {
+  display: block;
+  width: 144px;
+  height: 144px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.apresentacao_titulo h1 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  font-size: clamp(44px, 6vw, 66px);
+  line-height: 1.12;
+  letter-spacing: -1px;
+  max-width: none;
+}
+.apresentacao_titulo h1 > span:first-child {
+  color: var(--rosa);
+  font-weight: 700;
+}
+.apresentacao_titulo h1 > span:last-child {
+  color: var(--texto);
+  font-weight: 500;
+  font-size: 0.82em;
+  white-space: nowrap;
+}
+.apresentacao_titulo p {
+  margin: 18px 0 0;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--amarelo);
+  font-weight: 700;
+}
+.apresentacao_carregamento {
+  grid-column: 1/-1;
+  display: grid;
+  gap: 12px;
+  max-width: 360px;
+  width: 100%;
+  justify-self: center;
+}
+.apresentacao_carregamento > span {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--secundario);
+  text-align: center;
+}
+.apresentacao_barra {
+  height: 8px;
+  background: var(--painel);
+  overflow: hidden;
+}
+.apresentacao_barra > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--amarelo);
+  transform-origin: left;
+  animation: progresso_apresentacao 3s linear both;
+}
+.apresentacao_jogo.saindo {
+  animation: saida_apresentacao 0.25s ease-out both;
+}
+@keyframes progresso_apresentacao {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes saida_apresentacao {
+  to {
+    opacity: 0;
+  }
+}
+@media (max-width: 600px) {
+  .apresentacao_jogo {
+    padding: 24px;
+  }
+  .apresentacao_pagina {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 26px;
+    padding: 36px 18px 28px;
+  }
+  .apresentacao_emblema img {
+    width: 112px;
+    height: 112px;
+  }
+  .apresentacao_titulo {
+    text-align: center;
+  }
+  .apresentacao_titulo h1 {
+    font-size: 52px;
+  }
+  .apresentacao_titulo p {
+    margin-top: 14px;
+    font-size: 18px;
+  }
+  .apresentacao_carregamento {
+    max-width: 256px;
+  }
+  .apresentacao_fita {
+    right: 8px;
+    width: 28px;
+    height: 48px;
+  }
+}
+@media (max-height: 600px) {
+  .apresentacao_pagina {
+    padding-block: 22px;
+    row-gap: 18px;
+  }
+  .apresentacao_emblema img {
+    width: 96px;
+    height: 96px;
+  }
+  .apresentacao_titulo h1 {
+    font-size: 42px;
+  }
+  .apresentacao_titulo p {
+    margin-top: 8px;
+    font-size: 17px;
+  }
+  .apresentacao_carregamento {
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .apresentacao_jogo.saindo {
+    animation: none;
+  }
+  .apresentacao_barra > span {
+    animation-timing-function: steps(3, end);
+  }
+}
+
+.apresentacao_barra {
+  height: 10px;
+}
+.apresentacao_barra > span {
+  width: 0;
+  transform: none;
+  animation: none !important;
+  transition: none !important;
+}
+
+body > footer:has(#instalar:not([hidden])) {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  padding: 0;
+  border: 0;
+  background: transparent;
+  z-index: 70;
+}
+body:not(.na_tela_inicial) > footer {
+  display: none;
+}
+#instalar {
+  font-size: 15px;
+  min-height: 44px;
+  background: var(--azul);
+  border-color: var(--divisoria);
+  color: var(--preto);
+  box-shadow: 6px 8px 0 #0c090d66;
+}
+/* Nomes de jogador no limite do formulário não podem alargar as telas. */
+.encerramento_principal,
+.resolucao_efeito > header,
+.anuncio_turno_solo,
+.resultado_conteudo,
+.resultado_vencedor,
+.retomada_texto {
+  min-width: 0;
+  max-width: 100%;
+}
+.privacidade h1,
+.encerramento_principal > p,
+.anuncio_turno_solo > p,
+.resolucao_efeito > header > .sobretitulo,
+.resultado_vencedor strong {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.continuar_salva .retomada_situacao {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 450px) and (max-height: 600px) {
+  .na_tela_inicial .inicio_modos {
+    gap: 12px;
+  }
+  .na_tela_inicial .inicio_modos h1 {
+    font-size: 42px;
+  }
+  .na_tela_inicial .selecao_partida .escolher_modo {
+    min-height: 88px;
+    padding: 10px 12px;
+  }
+  .configurando_partida .pagina_configuracao .nova {
+    gap: 10px;
+    padding: 16px;
+  }
+  .configurando_partida .nova .identidade_modo h2 {
+    font-size: 20px;
+  }
+  .configurando_partida .nova .campos_jogadores label {
+    margin: 6px 0 4px;
+  }
+  .configurando_partida .nova .campos_jogadores input {
+    min-height: 44px;
+    padding: 8px;
+  }
+  .configurando_partida .nova .descricao_solo {
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .configurando_partida .nova .navegacao_fitas {
+    margin-top: 8px;
+    padding-top: 6px;
+  }
+  .resultado_vencedor > strong {
+    font-size: 20px;
+  }
+}
+@media (max-width: 450px) and (max-height: 600px) {
+  .na_tela_inicial .inicio_modos {
+    gap: 8px;
+  }
+  .na_tela_inicial .apresentacao_inicio {
+    gap: 6px;
+  }
+  .na_tela_inicial .inicio_modos h1 {
+    font-size: 32px;
+  }
+  .na_tela_inicial .inicio_modos .slogan_pagina {
+    font-size: 14px;
+    gap: 3px;
+  }
+  .na_tela_inicial .cabecalho_escolha h2 {
+    font-size: 23px;
+  }
+  .na_tela_inicial .selecao_partida .escolher_modo {
+    gap: 6px;
+  }
+  .na_tela_inicial .selecao_partida .marca_modo i {
+    width: 28px;
+    height: 36px;
+  }
+  .configurando_partida #aplicacao {
+    padding-block: 8px;
+  }
+  .turno_encerrado,
+  .resumo_solo,
+  .resolucao_efeito {
+    padding: 12px;
+    gap: 12px;
+  }
+  .encerramento_principal > p,
+  .anuncio_turno_solo > p {
+    margin-block: 8px;
+  }
+  .turno_encerrado .navegacao_fitas,
+  .resumo_solo .navegacao_fitas {
+    margin-top: 8px;
+  }
+  .resolucao_efeito h1 {
+    margin: 8px 0 12px;
+  }
+  .resolucao_cartas > div {
+    gap: 10px;
+  }
+  .resolucao_cartas .resumo_carta {
+    width: 88px;
+    min-width: 88px;
+    padding: 6px;
+    gap: 4px;
+  }
+  .resolucao_cartas .resumo_carta > .retrato {
+    width: 64px;
+    height: 64px;
+  }
+  .resolucao_cartas .resumo_carta h3 {
+    font-size: 10px;
+    line-height: 14px;
+    min-height: 28px;
+  }
+  .resolucao_descricao {
+    margin: 10px 0;
+    padding: 10px;
+  }
+  .resolucao_descricao p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .resultado_faixa > span:last-child {
+    display: none;
+  }
+  .resultado_conteudo {
+    padding: 12px;
+  }
+  .resultado_dados {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .resultado_dados > div {
+    min-width: 0;
+  }
+  .resultado_dados span {
+    overflow-wrap: anywhere;
+  }
+  .resultado_acoes {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 450px) and (max-height: 600px) {
+  .na_tela_inicial #aplicacao {
+    padding-block: 4px;
+  }
+  .na_tela_inicial .continuar_salva {
+    padding-block: 6px;
+    margin-top: 0;
+  }
+  body:has(
+      #aplicacao
+        > :is(
+          .privacidade,
+          .turno_encerrado,
+          .resolucao_efeito,
+          .resultado_final,
+          .resumo_solo,
+          .trovador_jogando
+        )
+    )
+    > #aplicacao {
+    padding-bottom: 0;
+  }
+  .turno_encerrado,
+  .resumo_solo,
+  .resolucao_efeito {
+    padding-bottom: 4px;
+  }
+  .turno_encerrado .resumo_carta > .retrato,
+  .resumo_solo .resumo_carta > .retrato {
+    width: 64px;
+    height: 64px;
+    aspect-ratio: auto;
+    justify-self: center;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 450px) and (max-height: 600px) {
+  .resolucao_efeito {
+    padding-top: 6px;
+  }
+  .resultado_conteudo {
+    padding-block: 8px;
+  }
+}
+/* Vit�ria: destaque para o vencedor e para as cartas que ficaram na fila. */
+body #aplicacao .resultado_final {
+  width: min(100%, 1040px);
+  border-color: var(--vencedor);
+  margin: 0 auto;
+  background: var(--fundo);
+}
+body #aplicacao .resultado_conteudo {
+  padding: clamp(18px, 3vw, 36px);
+}
+.resultado_abertura {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px 20px;
+}
+.resultado_abertura > .sobretitulo {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+body #aplicacao .resultado_abertura h1 {
+  grid-column: 1/-1;
+  font-size: clamp(46px, 9vw, 96px);
+  line-height: 1;
+  margin: 4px 0 16px;
+  color: var(--vencedor);
+  letter-spacing: -2px;
+}
+.resultado_turno {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 6px solid var(--vencedor);
+  padding-left: 14px;
+}
+.resultado_turno span {
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: 70px;
+  font-weight: 700;
+}
+.resultado_turno strong {
+  font-size: 40px;
+  line-height: 1;
+  color: var(--vencedor);
+}
+body #aplicacao .resultado_vencedor {
+  border: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+body #aplicacao .resultado_vencedor strong {
+  min-width: 0;
+  font-size: clamp(24px, 4vw, 38px);
+  line-height: 1.2;
+}
+.resultado_sobreviventes {
+  margin-top: 24px;
+}
+.resultado_sobreviventes > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border-top: 6px solid var(--divisoria);
+  padding-top: 14px;
+  margin-bottom: 14px;
+}
+.resultado_sobreviventes h2 {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.4;
+}
+.resultado_sobreviventes header > span {
+  font-size: 14px;
+  color: var(--vencedor);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.resultado_elenco {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+  gap: 10px;
+}
+.resultado_personagem {
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  padding: 10px 6px;
+  background: var(--fundo_carta);
+  border-top: 6px solid var(--vencedor);
+}
+.resultado_personagem .retrato {
+  width: 64px;
+  height: 64px;
+  aspect-ratio: 1;
+  margin: 0;
+}
+.resultado_personagem h3 {
+  margin: 0;
+  align-self: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+body #aplicacao .resultado_acoes.navegacao_fitas {
+  margin-top: 22px;
+}
+@media (max-width: 600px) {
+  .resultado_abertura {
+    gap: 8px;
+  }
+  .resultado_abertura > .sobretitulo {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .resultado_turno {
+    gap: 8px;
+    padding-left: 8px;
+  }
+  .resultado_turno strong {
+    font-size: 30px;
+  }
+  .resultado_turno span {
+    font-size: 11px;
+    max-width: 50px;
+  }
+  .resultado_elenco {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .resultado_personagem {
+    padding: 6px 3px;
+    gap: 6px;
+  }
+  .resultado_personagem .retrato {
+    width: 48px;
+    height: 48px;
+  }
+  .resultado_personagem h3 {
+    font-size: 9px;
+    line-height: 1.3;
+  }
+  .resultado_sobreviventes {
+    margin-top: 16px;
+  }
+  .resultado_sobreviventes h2 {
+    font-size: 13px;
+  }
+  .resultado_sobreviventes header > span {
+    font-size: 12px;
+  }
+}
+@media (max-height: 650px) {
+  body #aplicacao .resultado_conteudo {
+    padding: 14px;
+  }
+  body #aplicacao .resultado_abertura h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+  }
+  .resultado_personagem .retrato {
+    width: 32px;
+    height: 32px;
+  }
+  .resultado_sobreviventes > header {
+    padding-top: 8px;
+    margin-bottom: 8px;
+  }
+  .resultado_personagem {
+    padding-block: 4px;
+  }
+  body #aplicacao .resultado_acoes.navegacao_fitas {
+    margin-top: 12px;
+  }
+}
+.resultado_elenco {
+  max-height: max(90px, calc(100dvh - 430px));
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--vencedor) var(--fundo);
+  padding-right: 2px;
+}
+body #aplicacao .resultado_final {
+  max-height: calc(100dvh - 112px);
+}
+body #aplicacao .resultado_conteudo {
+  max-height: calc(100dvh - 124px);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.resultado_abertura,
+.resultado_vencedor,
+.resultado_acoes {
+  flex-shrink: 0;
+}
+.resultado_sobreviventes {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.resultado_sobreviventes > header {
+  flex-shrink: 0;
+}
+.resultado_elenco {
+  min-height: 0;
+  flex: 1;
+  max-height: none;
+}
+body #aplicacao .resultado_conteudo {
+  max-height: calc(100dvh - 140px);
+}
+/* Resultado: contorno completo e turno final em um �nico bloco. */
+.resultado_personagem {
+  border: 6px solid var(--vencedor);
+}
+.resultado_turno {
+  border: 0;
+  background: var(--rosa);
+  color: var(--texto);
+  padding: 12px;
+  gap: 12px;
+}
+.resultado_turno strong {
+  color: inherit;
+}
+@media (max-width: 600px) {
+  .resultado_turno {
+    padding: 8px;
+    gap: 8px;
+  }
+}

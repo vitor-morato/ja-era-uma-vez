@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1,
+    "nome": "Rapunzel",
+    "arquivo": "01_rapunzel.wav",
+    "carater": "Balbucio feminino leve e expressivo",
+    "duracao": 2
+  },
+  {
+    "id": 2,
+    "nome": "O Rei",
+    "arquivo": "02_rei.wav",
+    "carater": "Ordem grave firme, pouco ar",
+    "duracao": 2
+  },
+  {
+    "id": 3,
+    "nome": "O Caçador",
+    "arquivo": "03_cacador.wav",
+    "carater": "Resmungo grave carrancudo e disparo seco de espingarda ao final",
+    "duracao": 2
+  },
+  {
+    "id": 4,
+    "nome": "O Golem",
+    "arquivo": "04_golem.wav",
+    "carater": "Pedras pesadas batendo e raspando",
+    "duracao": 2
+  },
+  {
+    "id": 5,
+    "nome": "João e Maria",
+    "arquivo": "05_joao_maria.wav",
+    "carater": "Maria infantil feminina, depois João infantil masculino",
+    "duracao": 2
+  },
+  {
+    "id": 6,
+    "nome": "Dr. Victor Frankenstein",
+    "arquivo": "06_frankenstein.wav",
+    "carater": "Balbucio de cientista e três zaps caricatos",
+    "duracao": 2
+  },
+  {
+    "id": 7,
+    "nome": "O Lobo Mau",
+    "arquivo": "07_lobo_mau.wav",
+    "carater": "Uivo claro, longo e áspero de lobo",
+    "duracao": 2
+  },
+  {
+    "id": 8,
+    "nome": "O Espelho Mágico",
+    "arquivo": "08_espelho_magico.wav",
+    "carater": "Tilintar de vidro com ressonância curta",
+    "duracao": 2
+  },
+  {
+    "id": 9,
+    "nome": "O Patinho Feio",
+    "arquivo": "09_patinho_feio.wav",
+    "carater": "Quack-quack nasal com ataques definidos",
+    "duracao": 2
+  },
+  {
+    "id": 10,
+    "nome": "O Coelho",
+    "arquivo": "10_coelho.wav",
+    "carater": "Pulos elásticos com pequenas aterrissagens",
+    "duracao": 2
+  },
+  {
+    "id": 11,
+    "nome": "O Grilo Falante",
+    "arquivo": "11_grilo_falante.wav",
+    "carater": "Cri-cri aprovado preservado",
+    "duracao": 2
+  },
+  {
+    "id": 12,
+    "nome": "A Sereia",
+    "arquivo": "12_sereia.wav",
+    "carater": "Canto feminino meloso de sereia, sem palavras",
+    "duracao": 2
+  },
+  {
+    "id": 13,
+    "nome": "O Flautista de Hamelin",
+    "arquivo": "13_flautista.wav",
+    "carater": "Flauta clara e suave sem camada de chiado",
+    "duracao": 2
+  },
+  {
+    "id": 14,
+    "nome": "O Chapeleiro Maluco",
+    "arquivo": "14_chapeleiro.wav",
+    "carater": "Gargalhada maluca em rajadas irregulares",
+    "duracao": 2
+  },
+  {
+    "id": 15,
+    "nome": "Dom Quixote",
+    "arquivo": "15_dom_quixote.wav",
+    "carater": "Balbucio atrapalhado, médio e hesitante",
+    "duracao": 2
+  },
+  {
+    "id": 16,
+    "nome": "Robin Hood",
+    "arquivo": "16_robin_hood.wav",
+    "carater": "Chamado confiante e altivo",
+    "duracao": 2
+  },
+  {
+    "id": 17,
+    "nome": "Pinóquio",
+    "arquivo": "17_pinoquio.wav",
+    "carater": "Madeira, nariz crescendo e pontuações de cartum",
+    "duracao": 2
+  },
+  {
+    "id": 18,
+    "nome": "A Sombra do Peter Pan",
+    "arquivo": "18_sombra_peter_pan.wav",
+    "carater": "Duas rajadas suaves de vento, como um whoosh",
+    "duracao": 2
+  },
+  {
+    "id": 19,
+    "nome": "O Porquinho Construtor",
+    "arquivo": "19_porquinho.wav",
+    "carater": "Oinc-oinc nasal com final curto",
+    "duracao": 2
+  },
+  {
+    "id": 20,
+    "nome": "O Gênio da Lâmpada",
+    "arquivo": "20_genio.wav",
+    "carater": "Plim de lâmpada e risadinhas sarcásticas",
+    "duracao": 2
+  },
+  {
+    "id": 21,
+    "nome": "Rumpelstiltskin",
+    "arquivo": "21_rumpelstiltskin.wav",
+    "carater": "Resmungo maléfico taciturno com risada baixa",
+    "duracao": 2
+  },
+  {
+    "id": 22,
+    "nome": "O Curupira",
+    "arquivo": "22_curupira.wav",
+    "carater": "Folhas em pequenos gestos e grito limpo de proteção da mata",
+    "duracao": 2
+  }
+]
