@@ -1,4 +1,4 @@
-const versao = 'ja_era_uma_vez_v260';
+const versao = 'ja_era_uma_vez_v260_pwa1';
 const arquivos = [
   './scripts/orientacoes_poderes.js',
   './scripts/avisos_personagens.js',
