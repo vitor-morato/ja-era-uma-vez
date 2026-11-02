@@ -53,6 +53,18 @@ export function instalarInspecao(app, { obterSelecao, podeInspecionar, mostrar, 
     }
   });
   let entradaToque = false;
+  app.addEventListener(
+    'click',
+    (ev) => {
+      if (!ev.target.closest('[data-fechar-carta]')) return;
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
+      cancelarAbertura();
+      cancelarSaida();
+      fechar();
+    },
+    { capture: true },
+  );
   app.addEventListener('pointerdown', (ev) => {
     entradaToque = ev.pointerType !== 'mouse';
     if (entradaToque) {

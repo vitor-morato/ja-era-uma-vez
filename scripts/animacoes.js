@@ -284,7 +284,7 @@ export function animarTela(app, antes, contexto, animarCartas = false, transicao
     const el = app.querySelector(seletor),
       antigo = antes.paineis.get(seletor),
       dy = seletor === '.descarte_aberto' ? -18 : 18;
-    if (seletor === '.mao_recolhida.aberta') continue;
+    if (seletor === '.mao_recolhida.aberta' || seletor === '.carta_ampliada') continue;
     if (el && !antigo) {
       const x = seletor === '.carta_ampliada' ? '-50%' : '0';
       executarAnimacao(el, [

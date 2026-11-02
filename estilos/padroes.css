@@ -4271,3 +4271,311 @@ body
 #aplicacao .opcoes_turno > button[data-tipo-acao='ativar'] {
   --cor_hover_acao: var(--amarelo);
 }
+
+/* Marcadores presos à borda, sem percurso nem fresta no encaixe. */
+#aplicacao .jogo .opcoes_turno .fita_botao {
+  top: calc(100% + 5px);
+  transform: none;
+  transition: none;
+}
+
+/* O modo escolhido mantém seu marcador até concluir ou cancelar. */
+body #aplicacao[data-fase-pulso] .jogo.modo_construir .opcoes_turno > [data-tipo-acao='construir'],
+body #aplicacao[data-fase-pulso] .jogo.modo_mover .opcoes_turno > [data-tipo-acao='mover'],
+body #aplicacao[data-fase-pulso] .jogo.modo_ativar .opcoes_turno > [data-tipo-acao='ativar'] {
+  border-color: var(--cor_hover_acao) !important;
+  z-index: 40;
+}
+#aplicacao .jogo.modo_construir [data-tipo-acao='construir'] .fita_botao,
+#aplicacao .jogo.modo_mover [data-tipo-acao='mover'] .fita_botao,
+#aplicacao .jogo.modo_ativar [data-tipo-acao='ativar'] .fita_botao {
+  opacity: 1;
+  visibility: visible;
+}
+.carta_ampliada .topo_detalhes {
+  position: relative;
+  overflow: visible;
+  padding-right: 60px;
+}
+body #aplicacao .carta_ampliada .topo_detalhes .fechar_detalhes {
+  position: absolute;
+  top: -1px;
+  right: 6px;
+  width: 40px;
+  min-width: 40px;
+  height: 54px;
+  min-height: 54px;
+  padding: 0 0 12px;
+  border: 0;
+  z-index: 5;
+}
+.carta_ampliada .fechar_detalhes > span {
+  font-size: 30px;
+}
+
+@media (max-width: 700px) {
+  #aplicacao .jogo {
+    --largura_marcador_ui: 28px;
+    --altura_marcador_ui: 44px;
+    --ponta_marcador_ui: 14px;
+  }
+  #aplicacao .jogo .mesa_compacta {
+    padding-bottom: 54px;
+  }
+  #aplicacao .jogo .direcao {
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 6px 4px;
+  }
+  #aplicacao .jogo .fila_compartilhada {
+    padding-top: 28px;
+    padding-bottom: 12px;
+  }
+  #aplicacao .jogo .opcoes_turno {
+    gap: 8px;
+  }
+  #aplicacao .jogo .opcoes_turno > button {
+    min-height: 52px;
+    padding: 5px 2px;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+  #aplicacao .jogo .opcoes_turno .fita_botao {
+    font-size: 23px;
+  }
+  #aplicacao .jogo .estado_mesa {
+    gap: 8px;
+  }
+  #aplicacao .jogo .abrir_descarte {
+    min-height: 40px;
+    padding: 5px 8px;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+  #aplicacao .jogo .abrir_descarte > span:first-child {
+    white-space: normal;
+    min-width: 0;
+    font-size: 9px;
+    line-height: 1.2;
+    max-width: 64px;
+    overflow-wrap: normal;
+    flex: 1;
+  }
+  #aplicacao .jogo .fila_compartilhada .retrato {
+    justify-self: center;
+  }
+  #aplicacao .jogo .fila_compartilhada .nome_miniatura {
+    font-size: 10px;
+  }
+  #aplicacao .jogo .fila_compartilhada [data-carta='21'] .nome_miniatura {
+    font-size: 9px;
+  }
+  #aplicacao[data-fase-pulso]
+    .jogo:is(.modo_construir, .modo_mover, .modo_ativar)
+    .linha_contexto.orientacao_acao {
+    margin-top: 14px;
+    padding: 8px;
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  #aplicacao .jogo .orientacao_acao > strong {
+    font-size: 10px;
+  }
+  #aplicacao .jogo .resumo_turno .controles_turno > [data-comando='encerrar'] {
+    font-size: 12px;
+    height: 44px;
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+  #aplicacao .jogo .resumo_turno .controles_turno > .pontos_acoes {
+    height: 44px;
+  }
+  body.em_partida #aplicacao .jogo .resumo_turno {
+    row-gap: 6px;
+  }
+  #aplicacao .jogo .resumo_turno > div:not(.controles_turno) > .rotulo_turno {
+    font-size: 13px;
+  }
+  #aplicacao .jogo .resumo_turno > div:not(.controles_turno) > strong {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 450px) and (max-height: 600px) {
+  #aplicacao[data-fase-pulso]
+    .jogo:is(.modo_construir, .modo_mover, .modo_ativar)
+    .linha_contexto.orientacao_acao {
+    margin-top: 6px;
+    padding: 6px;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+  #aplicacao .jogo .orientacao_acao > strong {
+    display: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  #aplicacao .carta_ampliada,
+  #aplicacao .carta_ampliada * {
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 450px) and (max-height: 600px) {
+  #aplicacao .jogo .fila_compartilhada {
+    padding-top: 20px;
+  }
+}
+
+/* Android: leitura compacta, com fitas na área de rolagem. */
+@media (max-width: 650px) {
+  #consulta .camada_marcador_sumario {
+    z-index: 3;
+  }
+  #consulta > header {
+    min-height: 52px;
+    padding: 10px 12px;
+  }
+  #consulta > header h2 {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+  #consulta .marcador_sumario {
+    padding: 0 0 12px;
+    justify-content: center;
+  }
+  #consulta .marcador_sumario > .icone_sumario {
+    inset: 0 0 12px;
+    font-size: 23px;
+  }
+  #consulta .marcador_sumario::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 12px), 0 100%);
+  }
+  #consulta .marcador_sumario::after {
+    display: none;
+  }
+  #consulta .manual {
+    padding: 16px 12px;
+  }
+  #consulta .manual_secao.pagina_capitulo > div,
+  #consulta .manual_personagens {
+    padding-right: 68px;
+    min-width: 0;
+  }
+  #consulta .manual_abertura {
+    padding-right: 36px;
+  }
+  #consulta .pagina_capitulo {
+    padding-block: 20px;
+    margin-bottom: 12px;
+  }
+  #consulta .pagina_capitulo h2 {
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    text-wrap: wrap;
+  }
+  #consulta .manual h3,
+  #consulta .manual_secao h3 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  #consulta .manual p,
+  #consulta .manual li,
+  #consulta .manual_secao p,
+  #consulta .manual_habilidade > p,
+  #consulta .manual_atalhos p {
+    font-size: 14px;
+    line-height: 1.55;
+    text-align: left;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+  #consulta .manual_atalhos {
+    margin-block: 18px;
+    padding: 12px;
+    border-width: 4px;
+  }
+  #consulta .manual_atalhos > h3 {
+    font-size: 16px;
+  }
+  #consulta .atalho_manual {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding-block: 14px;
+  }
+  #consulta .atalho_manual > span {
+    width: 24px;
+    height: 28px;
+    font-size: 18px;
+  }
+  #consulta .atalho_manual h4 {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  #consulta .manual_guia_paineis,
+  #consulta .manual_tipos,
+  #consulta .guia_comparacao {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  #consulta .manual_guia_paineis > article {
+    padding: 12px;
+  }
+  #consulta .manual .rotulo_capitulo,
+  #consulta .manual .sobretitulo,
+  #consulta .manual_edicao {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  #aplicacao .jogo .opcoes_turno > button {
+    font-size: 10px;
+  }
+  #aplicacao .jogo .estado_mesa .texto_indicador,
+  #aplicacao .jogo .estado_mesa .contagens_jogadores > .dono {
+    font-size: 11px;
+  }
+  #aplicacao .jogo .resumo_turno .pontos_acoes {
+    font-size: 18px;
+  }
+  #aplicacao .jogo .resumo_turno .pontos_acoes small {
+    font-size: 17px;
+  }
+  #aplicacao .carta_ampliada .identidade_carta h2 {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+}
+
+/* A mesma ponta em V e a mesma sombra do marcador de abortar. */
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita::before,
+#consulta .marcador_sumario::before,
+#aplicacao .opcoes_turno .fita_botao::before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 65%, 0 100%);
+}
+body :is(#aplicacao, #confirmacao, .cabecalho) button.controle_fita::after,
+#consulta .marcador_sumario::after,
+#aplicacao .opcoes_turno .fita_botao::after {
+  display: block;
+  bottom: -6px;
+  height: calc(35% + 6px);
+  background: var(--preto);
+  opacity: 0.4;
+  clip-path: polygon(0 calc(100% - 6px), 50% 0, 100% calc(100% - 6px), 100% 100%, 50% 6px, 0 100%);
+}
+body #aplicacao .carta_ampliada .topo_detalhes .fechar_detalhes {
+  height: 64px;
+  min-height: 64px;
+}
+.carta_ampliada .fechar_detalhes > span {
+  inset: 0 0 35%;
+}
+.carta_ampliada .fechar_detalhes .icone_navegacao {
+  width: 24px;
+  height: 24px;
+}
+#consulta .marcador_sumario > .icone_sumario {
+  inset: 0 0 35%;
+}

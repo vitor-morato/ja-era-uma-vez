@@ -187,7 +187,7 @@ function ajustarDetalhes() {
       ...new Set([larguraInicial, Math.min(480, window.innerWidth - margem * 2)]),
     ]) {
       prova.style.width = largura + 'px';
-      for (const fonte of [16, 15, 14]) {
+      for (const fonte of window.innerWidth <= 650 ? [14, 13] : [16, 15, 14]) {
         prova.style.setProperty('--texto_detalhes', fonte + 'px');
         let altura = 0;
         for (const html of referencias) {
@@ -214,17 +214,37 @@ function ajustarDetalhes() {
   const altura = Math.min(ajuste.altura, alturaDisponivel);
   const topoPreferido = Math.max(margem, base - Math.min(440, altura));
   const topo = Math.min(topoPreferido, Math.max(margem, window.innerHeight - margem - altura));
-  const mao = app.querySelector('.mao_recolhida.aberta');
-  const bordaMao = mao?.getBoundingClientRect().top;
-  const alturaFinal = mao
-    ? Math.min(window.innerHeight - margem - topo, Math.max(altura, bordaMao + 20 - topo))
-    : altura;
   painel.style.top = Math.round(topo) + 'px';
   painel.style.bottom = 'auto';
-  painel.style.height = Math.ceil(alturaFinal) + 'px';
+  painel.style.height = Math.ceil(altura) + 'px';
+}
+
+function ajustarFilaCelular() {
+  const fila = app.querySelector('.fila_compartilhada');
+  if (!fila) return;
+  for (const nome of ['--altura_carta', '--lado_retrato', '--largura_carta', '--desnivel_j2'])
+    fila.style.removeProperty(nome);
+  if (window.innerWidth > 700) return;
+  const r = fila.getBoundingClientRect(),
+    estilo = getComputedStyle(fila);
+  const jogo = app.querySelector('.jogo').getBoundingClientRect();
+  // Reserva a barra da mão mesmo quando a gaveta está aberta sobre a mesa.
+  const fim = Math.min(r.bottom, jogo.bottom - 54);
+  const disponivel = fim - r.top - parseFloat(estilo.paddingTop) - parseFloat(estilo.paddingBottom);
+  const ladoMinimo = window.innerHeight <= 600 ? 48 : 64;
+  const lado = Math.max(ladoMinimo, Math.min(104, Math.floor((disponivel - 106) / 8) * 8));
+  const altura = lado + 90;
+  fila.style.setProperty('--lado_retrato', lado + 'px');
+  fila.style.setProperty('--largura_carta', Math.max(112, lado + 24) + 'px');
+  fila.style.setProperty('--altura_carta', altura + 'px');
+  fila.style.setProperty(
+    '--desnivel_j2',
+    Math.max(0, Math.min(altura / 2, disponivel - altura)) + 'px',
+  );
 }
 
 function separarExtremidades() {
+  ajustarFilaCelular();
   const fila = app.querySelector('.fila_compartilhada');
   if (!fila) return;
   fila.querySelectorAll('.divisoria_fila').forEach((el) => el.remove());
@@ -1374,7 +1394,12 @@ let timerFeedbackToque;
 app.addEventListener(
   'click',
   (ev) => {
-    if (ev.pointerType !== 'touch' && ev.pointerType !== 'pen') return;
+    if (
+      ev.pointerType !== 'touch' &&
+      ev.pointerType !== 'pen' &&
+      !matchMedia('(pointer: coarse)').matches
+    )
+      return;
     const botao = ev.target.closest('.opcoes_turno button:not(:disabled)');
     if (botao?.dataset.comando === 'cancelar') {
       clearTimeout(timerFeedbackToque);

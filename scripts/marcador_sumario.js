@@ -19,12 +19,11 @@ export function instalarMarcadorSumario(dialogo, conteudo) {
       folha = dialogo.getBoundingClientRect(),
       linha = indice.getBoundingClientRect().bottom,
       referencia = vermelho.getBoundingClientRect();
+    const celular = window.innerWidth <= 650;
     const origem = linha - area.top,
-      altura = referencia.height;
-    const esquerda = Math.max(
-      0,
-      indice.getBoundingClientRect().right - area.left - referencia.width,
-    );
+      altura = celular ? 52 : referencia.height,
+      largura = celular ? 32 : referencia.width;
+    const esquerda = Math.max(0, indice.getBoundingClientRect().right - area.left - largura);
     camada.hidden = false;
     botao.hidden = linha >= area.bottom;
     Object.assign(camada.style, {
@@ -36,13 +35,13 @@ export function instalarMarcadorSumario(dialogo, conteudo) {
     Object.assign(fechar.style, {
       left: esquerda + 'px',
       top: '0px',
-      width: referencia.width + 'px',
+      width: largura + 'px',
       height: altura + 'px',
     });
     Object.assign(botao.style, {
-      left: Math.max(0, esquerda - referencia.width - 8) + 'px',
+      left: Math.max(0, esquerda - largura - (celular ? 4 : 8)) + 'px',
       top: Math.max(0, origem) + 'px',
-      width: referencia.width + 'px',
+      width: largura + 'px',
       height: altura + 'px',
     });
   }
