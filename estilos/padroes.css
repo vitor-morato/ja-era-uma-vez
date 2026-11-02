@@ -4182,3 +4182,92 @@ body #aplicacao .resultado_conteudo {
     gap: 8px;
   }
 }
+
+/* Toque: feedback temporário equivalente ao hover, sem segurar o dedo. */
+body
+  #aplicacao[data-feedback-toque='comprar']
+  .jogo
+  .opcoes_turno
+  > button[data-comando='comprar'] {
+  border-color: var(--cor_hover_acao, var(--texto)) !important;
+  z-index: 40;
+}
+body
+  #aplicacao[data-feedback-toque='comprar']
+  .opcoes_turno
+  > button[data-comando='comprar']
+  .fita_botao {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+body
+  #aplicacao[data-feedback-toque='construir']
+  .jogo
+  .opcoes_turno
+  > button[data-tipo-acao='construir'] {
+  border-color: var(--cor_hover_acao, var(--texto)) !important;
+  z-index: 40;
+}
+body
+  #aplicacao[data-feedback-toque='construir']
+  .opcoes_turno
+  > button[data-tipo-acao='construir']
+  .fita_botao {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+body #aplicacao[data-feedback-toque='mover'] .jogo .opcoes_turno > button[data-tipo-acao='mover'] {
+  border-color: var(--cor_hover_acao, var(--texto)) !important;
+  z-index: 40;
+}
+body
+  #aplicacao[data-feedback-toque='mover']
+  .opcoes_turno
+  > button[data-tipo-acao='mover']
+  .fita_botao {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+body
+  #aplicacao[data-feedback-toque='ativar']
+  .jogo
+  .opcoes_turno
+  > button[data-tipo-acao='ativar'] {
+  border-color: var(--cor_hover_acao, var(--texto)) !important;
+  z-index: 40;
+}
+body
+  #aplicacao[data-feedback-toque='ativar']
+  .opcoes_turno
+  > button[data-tipo-acao='ativar']
+  .fita_botao {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (hover: none), (pointer: coarse) {
+  #aplicacao .carta_ampliada {
+    pointer-events: auto;
+  }
+  #aplicacao .abrir_mao:active,
+  #aplicacao .abrir_descarte:active,
+  #aplicacao .abrir_poderes:active {
+    filter: brightness(1.12);
+  }
+}
+
+#aplicacao .opcoes_turno > button[data-tipo-acao='construir'] {
+  --cor_hover_acao: var(--azul);
+}
+
+#aplicacao .opcoes_turno > button[data-tipo-acao='mover'] {
+  --cor_hover_acao: var(--texto);
+}
+
+#aplicacao .opcoes_turno > button[data-tipo-acao='ativar'] {
+  --cor_hover_acao: var(--amarelo);
+}

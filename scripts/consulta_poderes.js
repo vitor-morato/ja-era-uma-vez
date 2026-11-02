@@ -35,26 +35,29 @@ export function instalarConsultaPoderes(app) {
   });
   app.addEventListener('focusin', (ev) => {
     const botao = ev.target.closest('.abrir_poderes');
-    if (botao) abrir(botao);
+    if (botao && !toque) abrir(botao);
   });
   app.addEventListener('focusout', (ev) => {
-    if (!naLista(ev.relatedTarget)) saida = setTimeout(fechar, 220);
+    if (!toque && !naLista(ev.relatedTarget)) saida = setTimeout(fechar, 220);
   });
-  app.addEventListener('pointerdown', (ev) => {
-    if (ev.pointerType !== 'touch') return;
+  app.addEventListener(
+    'pointerdown',
+    (ev) => {
+      toque = ev.pointerType !== 'mouse';
+    },
+    { capture: true },
+  );
+  app.addEventListener('click', (ev) => {
+    if (!toque) return;
     const botao = ev.target.closest('.abrir_poderes');
     if (botao) {
-      toque = ev.pointerId;
-      abrir(botao);
-    } else if (naLista(ev.target)) toque = ev.pointerId;
+      if (botao.getAttribute('aria-expanded') === 'true') fechar();
+      else abrir(botao);
+    }
   });
-  for (const tipo of ['pointerup', 'pointercancel'])
-    document.addEventListener(tipo, (ev) => {
-      if (toque === ev.pointerId) {
-        toque = null;
-        fechar();
-      }
-    });
+  document.addEventListener('click', (ev) => {
+    if (toque && !naLista(ev.target)) fechar();
+  });
   app.addEventListener('keydown', (ev) => {
     if (ev.key === 'Escape') fechar();
   });

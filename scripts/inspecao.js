@@ -1,12 +1,7 @@
 // Inspeção transitória. O intervalo permite ir da miniatura ao bloco ativo ampliado.
-export function instalarInspecao(
-  app,
-  { obterSelecao, podeInspecionar, podeInspecionarToque = () => true, mostrar, fechar },
-) {
+export function instalarInspecao(app, { obterSelecao, podeInspecionar, mostrar, fechar }) {
   let abrir = null,
     sair = null,
-    toque = null,
-    bloquearClique = false,
     ponteiro = null;
   const cancelarAbertura = () => {
     clearTimeout(abrir);
@@ -28,11 +23,12 @@ export function instalarInspecao(
       sair = null;
       const alvo = ponteiro ? document.elementFromPoint(ponteiro.x, ponteiro.y) : null;
       const foco = document.activeElement;
-      if (!toque && !sobreInspecao(alvo) && !foco?.closest?.('.carta_ampliada')) fechar();
+      if (!entradaToque && !sobreInspecao(alvo) && !foco?.closest?.('.carta_ampliada')) fechar();
     }, 260);
   }
   app.addEventListener('pointerover', (ev) => {
     if (ev.pointerType !== 'mouse') return;
+    entradaToque = false;
     ponteiro = { x: ev.clientX, y: ev.clientY };
     if (sobreInspecao(ev.target)) cancelarSaida();
     const carta = ev.target.closest('[data-carta]');
@@ -55,59 +51,32 @@ export function instalarInspecao(
       if (sobreInspecao(ev.target)) cancelarSaida();
       else fecharDepois();
     }
-    if (toque && !toque.aberto && Math.hypot(ev.clientX - toque.x, ev.clientY - toque.y) > 10)
-      cancelarAbertura();
   });
+  let entradaToque = false;
   app.addEventListener('pointerdown', (ev) => {
-    if (ev.pointerType !== 'touch' || !podeInspecionar() || !podeInspecionarToque()) return;
-    const carta = ev.target.closest('[data-carta]');
-    if (!carta) return;
-    cancelarAbertura();
-    cancelarSaida();
-    bloquearClique = true;
-    toque = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, aberto: false };
-    const id = Number(carta.dataset.carta);
-    abrir = setTimeout(() => {
-      if (toque && podeInspecionar()) {
-        toque.aberto = true;
-        mostrar(id);
-      }
-    }, 300);
-  });
-  function terminarToque(ev) {
-    if (!toque || ev.pointerId !== toque.id) return;
-    cancelarAbertura();
-    const abriu = toque.aberto;
-    toque = null;
-    if (abriu && ev.type === 'pointerup') {
-      const botao = document
-        .elementFromPoint(ev.clientX, ev.clientY)
-        ?.closest?.('.carta_ampliada button');
-      // Segure a miniatura, deslize até o bloco ativo e solte para confirmar a ativação.
-      if (botao && !botao.disabled) botao.click();
+    entradaToque = ev.pointerType !== 'mouse';
+    if (entradaToque) {
+      cancelarAbertura();
+      cancelarSaida();
     }
-    if (abriu) fechar();
-    setTimeout(() => {
-      bloquearClique = false;
-    }, 100);
-  }
-  document.addEventListener('pointerup', terminarToque);
-  document.addEventListener('pointercancel', terminarToque);
-  app.addEventListener(
-    'click',
-    (ev) => {
-      if (bloquearClique && ev.isTrusted) {
-        ev.preventDefault();
-        ev.stopImmediatePropagation();
-      }
-    },
-    { capture: true },
-  );
+  });
+  // A seleção usa o clique nativo: levantar o dedo não fecha a carta.
+  document.addEventListener('click', (ev) => {
+    if (
+      !entradaToque ||
+      ev.target.closest('[data-carta],.carta_ampliada,.abrir_mao,.abrir_descarte,.consulta_poderes')
+    )
+      return;
+    cancelarSaida();
+    fechar();
+  });
   // Ativações programáticas de teclado continuam acessíveis.
   app.addEventListener('focusin', (ev) => {
     if (ev.target.closest('.carta_ampliada')) cancelarSaida();
   });
-  app.addEventListener('focusout', fecharDepois);
+  app.addEventListener('focusout', () => {
+    if (!entradaToque) fecharDepois();
+  });
   document.addEventListener('pointerout', (ev) => {
     if (ev.pointerType === 'mouse' && !ev.relatedTarget) {
       ponteiro = null;
@@ -117,21 +86,14 @@ export function instalarInspecao(
   window.addEventListener('blur', () => {
     cancelarAbertura();
     cancelarSaida();
-    toque = null;
     ponteiro = null;
-    bloquearClique = false;
     fechar();
   });
 }
 
-// Gavetas abertas por clique/pressão: sair da região recolhe sem botão extra.
-export function instalarGavetas(
-  app,
-  { obterAberta, abrir, fechar, construindo, podeFechar = () => true },
-) {
-  let saida = null,
-    toque = null,
-    bloquear = false;
+// Mouse abre por hover; no toque, a gaveta permanece até tocar fora.
+export function instalarGavetas(app, { obterAberta, abrir, fechar, podeFechar = () => true }) {
+  let saida = null;
   const cancelar = () => {
     clearTimeout(saida);
     saida = null;
@@ -141,14 +103,14 @@ export function instalarGavetas(
     if (!tipo) return false;
     return Boolean(
       alvo?.closest?.(tipo === 'mao' ? '.mao_recolhida' : '.descarte_aberto, .abrir_descarte') ||
-      alvo?.closest?.('.carta_ampliada'),
+      alvo?.closest?.('.carta_ampliada,.consulta_poderes'),
     );
   }
   function agendar() {
     if (saida || !obterAberta()) return;
     saida = setTimeout(() => {
       saida = null;
-      if (!toque) {
+      if (!entradaToque) {
         if (podeFechar()) fechar();
         else agendar();
       }
@@ -172,51 +134,16 @@ export function instalarGavetas(
       else agendar();
     }
   });
+  let entradaToque = false;
   app.addEventListener('pointerdown', (ev) => {
-    if (ev.pointerType !== 'touch') return;
-    const controle = ev.target.closest('.abrir_mao,.abrir_descarte');
-    if (!controle && !dentro(ev.target)) return;
-    cancelar();
-    toque = { id: ev.pointerId, controle: Boolean(controle) };
-    if (controle) {
-      bloquear = true;
-      abrir(controle.classList.contains('abrir_mao') ? 'mao' : 'descarte');
-    }
+    entradaToque = ev.pointerType !== 'mouse';
+    if (entradaToque) cancelar();
   });
-  function terminar(ev) {
-    if (!toque || ev.pointerId !== toque.id) return;
-    const iniciouControle = toque.controle;
-    toque = null;
+  document.addEventListener('click', (ev) => {
+    if (!entradaToque || !obterAberta() || dentro(ev.target) || !podeFechar()) return;
     cancelar();
-    if (app.dataset.gestoConstrucaoConcluido === 'true') {
-      bloquear = false;
-      return;
-    }
-    const alvo = document.elementFromPoint(ev.clientX, ev.clientY);
-    if (ev.type === 'pointerup' && construindo() && alvo?.closest?.('.faixa_mao [data-carta]')) {
-      bloquear = true;
-      alvo.closest('[data-carta]').click();
-    } else if (ev.type === 'pointerup' && iniciouControle && alvo?.closest?.('[data-carta]'))
-      alvo.closest('[data-carta]').click();
-    // Deixa o clique nativo de uma carta terminar antes de recolher a região.
-    setTimeout(() => {
-      if (podeFechar()) fechar();
-      else agendar();
-      bloquear = false;
-    }, 80);
-  }
-  document.addEventListener('pointerup', terminar);
-  document.addEventListener('pointercancel', terminar);
-  app.addEventListener(
-    'click',
-    (ev) => {
-      if (bloquear && ev.isTrusted) {
-        ev.preventDefault();
-        ev.stopImmediatePropagation();
-      }
-    },
-    { capture: true },
-  );
+    fechar({ preservarSelecao: Boolean(ev.target.closest('[data-carta],.carta_ampliada')) });
+  });
   app.addEventListener('keydown', (ev) => {
     if (ev.key === 'Escape' && obterAberta() && podeFechar()) {
       cancelar();
@@ -225,8 +152,6 @@ export function instalarGavetas(
   });
   window.addEventListener('blur', () => {
     cancelar();
-    toque = null;
-    bloquear = false;
     fechar();
   });
 }

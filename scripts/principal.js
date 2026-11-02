@@ -1055,13 +1055,18 @@ app.addEventListener('click', async (ev) => {
       break;
     case 'alternar_descarte':
       if (modo === 'construir') break;
-      descarteAberto = true;
+      descarteAberto =
+        ev.pointerType === 'touch' || ev.pointerType === 'pen' ? !descarteAberto : true;
       maoAberta = false;
+      selecao = null;
       desenhar();
       break;
     case 'alternar_mao':
       descarteAberto = false;
-      maoAberta = true;
+      maoAberta =
+        modo === 'construir' ||
+        (ev.pointerType === 'touch' || ev.pointerType === 'pen' ? !maoAberta : true);
+      selecao = null;
       desenhar();
       break;
     case 'construir':
@@ -1106,7 +1111,6 @@ instalarInspecao(app, {
     modo !== 'mover' &&
     app.dataset.deslizando !== 'true' &&
     !document.querySelector('dialog[open]'),
-  podeInspecionarToque: () => modo !== 'construir',
   mostrar: (id) => {
     if (selecao !== id) {
       selecao = id;
@@ -1137,16 +1141,15 @@ instalarGavetas(app, {
     }
     desenhar();
   },
-  fechar: () => {
+  fechar: ({ preservarSelecao = false } = {}) => {
     if (modo === 'construir' || Date.now() < maoAnimadaAte) return;
     if (maoAberta || descarteAberto) {
       maoAberta = false;
       descarteAberto = false;
-      selecao = null;
+      if (!preservarSelecao) selecao = null;
       desenhar();
     }
   },
-  construindo: () => modo === 'construir',
 });
 instalarConstrucao(app, {
   obterEstado: () => estado,
@@ -1365,3 +1368,24 @@ if ('serviceWorker' in navigator) {
       offline.textContent = 'Offline indisponível. Use HTTPS ou localhost.';
     });
 } else offline.textContent = 'Use a opção de instalação do menu do navegador, quando disponível.';
+
+// Feedback de toque persiste nas renderizações, sem alterar ações nem gestos.
+let timerFeedbackToque;
+app.addEventListener(
+  'click',
+  (ev) => {
+    if (ev.pointerType !== 'touch' && ev.pointerType !== 'pen') return;
+    const botao = ev.target.closest('.opcoes_turno button:not(:disabled)');
+    if (botao?.dataset.comando === 'cancelar') {
+      clearTimeout(timerFeedbackToque);
+      delete app.dataset.feedbackToque;
+      return;
+    }
+    const tipo = botao?.dataset.tipoAcao || botao?.dataset.comando;
+    if (!['comprar', 'construir', 'mover', 'ativar'].includes(tipo)) return;
+    clearTimeout(timerFeedbackToque);
+    app.dataset.feedbackToque = tipo;
+    timerFeedbackToque = setTimeout(() => delete app.dataset.feedbackToque, 2000);
+  },
+  { capture: true },
+);
